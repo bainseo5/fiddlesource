@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "preview": "vite preview",
-    "start": "node backend/server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@google/genai": "^1.41.0",
