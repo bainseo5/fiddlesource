@@ -32,11 +32,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
       setLoadError(null);
       const targetTime = currentTune.startTime || 0;
       
-      // Ensure audio URL points to backend
-      const audioUrl = currentTune.audioUrl.startsWith('http') 
-        ? currentTune.audioUrl 
-        : `http://localhost:3001${currentTune.audioUrl}`;
-      
       const handleCanPlay = () => {
         if (audioRef.current) {
           audioRef.current.currentTime = targetTime;
@@ -48,8 +43,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
         }
       };
 
-      if (audioRef.current.src !== audioUrl) {
-        audioRef.current.src = audioUrl;
+      if (audioRef.current.src !== currentTune.audioUrl) {
+        audioRef.current.src = currentTune.audioUrl;
         audioRef.current.load();
         audioRef.current.addEventListener('canplay', handleCanPlay, { once: true });
       } else {
