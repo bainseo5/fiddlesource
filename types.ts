@@ -28,6 +28,7 @@ export interface SearchFilters {
   collection: string;
   session: string;
   instrument: string;
+  showNewOnly: boolean;
 }
 
-export type ViewMode = 'grid' | 'sessions';
+export type ViewMode = 'grid' | 'list' | 'sessions';

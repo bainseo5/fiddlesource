@@ -1,14 +1,14 @@
 
 import React from 'react';
-import { Search, Filter, X, Grid3x3, Library, Music2 } from 'lucide-react';
-import { SearchFilters } from '../types';
+import { Search, Filter, X, Grid3x3, Library, Music2, List, Star } from 'lucide-react';
+import { SearchFilters, ViewMode } from '../types';
 
 interface SearchFilterProps {
   filters: SearchFilters;
   setFilters: React.Dispatch<React.SetStateAction<SearchFilters>>;
   onClear: () => void;
-  viewMode: 'grid' | 'sessions';
-  setViewMode: (mode: 'grid' | 'sessions') => void;
+  viewMode: ViewMode;
+  setViewMode: (mode: ViewMode) => void;
   collections: string[];
   sessions: string[];
 }
@@ -51,6 +51,17 @@ export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilt
                 Grid
               </button>
               <button
+                onClick={() => setViewMode('list')}
+                className={`flex items-center gap-1 px-3 py-2 text-sm transition-colors ${
+                  viewMode === 'list' 
+                    ? 'bg-amber-500 text-white rounded-lg' 
+                    : 'text-stone-600 hover:text-stone-800'
+                }`}
+              >
+                <List className="w-4 h-4" />
+                List
+              </button>
+              <button
                 onClick={() => setViewMode('sessions')}
                 className={`flex items-center gap-1 px-3 py-2 text-sm transition-colors ${
                   viewMode === 'sessions' 
@@ -62,6 +73,20 @@ export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilt
                 Sessions
               </button>
             </div>
+
+            {/* Show New Only Toggle */}
+            <button
+              onClick={() => setFilters(prev => ({ ...prev, showNewOnly: !prev.showNewOnly }))}
+              className={`flex items-center gap-2 px-3 py-2 border rounded-lg text-sm font-medium transition-all ${
+                filters.showNewOnly 
+                  ? 'bg-green-100 border-green-300 text-green-800' 
+                  : 'bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100'
+              }`}
+              title={filters.showNewOnly ? 'Showing newly added tunes only' : 'Showing all tunes'}
+            >
+              <Star className={`w-4 h-4 ${filters.showNewOnly ? 'fill-current' : ''}`} />
+              {filters.showNewOnly ? 'New Only' : 'All Tunes'}
+            </button>
 
             <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
               <Library className="w-4 h-4" />
@@ -123,7 +148,7 @@ export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilt
               </select>
             </div>
 
-            {(filters.query || filters.region || filters.key || filters.collection || filters.session || filters.instrument) && (
+            {(filters.query || filters.region || filters.key || filters.collection || filters.session || filters.instrument || !filters.showNewOnly) && (
               <button 
                 onClick={onClear}
                 className="flex items-center gap-1 text-sm font-medium text-amber-600 hover:text-amber-700 p-2"

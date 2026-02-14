@@ -4,11 +4,11 @@ import { SearchFiltersBar } from './components/SearchFilters';
 import { TuneCard } from './components/TuneCard';
 import { TuneDetailPage } from './components/TuneDetailPage';
 import { AudioPlayer } from './components/AudioPlayer';
-import { Tune, SearchFilters } from './types';
+import { Tune, SearchFilters, ViewMode } from './types';
 import { saveToDatabase, getFromDatabase, getAllSavedIds, removeFromDatabase } from './db';
 import { extractSegment } from './audioUtils';
 import * as api from './api';
-import { History, X, Star, Headphones, AlertTriangle, Download, Trash2, CheckCircle2, FileJson, Loader2 } from 'lucide-react';
+import { History, X, Star, Headphones, AlertTriangle, Download, Trash2, CheckCircle2, FileJson, Loader2, Info, Play } from 'lucide-react';
 
 const App: React.FC = () => {
   const [filters, setFilters] = useState<SearchFilters>({
@@ -18,10 +18,11 @@ const App: React.FC = () => {
     genre: '',
     collection: '',
     session: '',
-    instrument: ''
+    instrument: '',
+    showNewOnly: true
   });
 
-  const [viewMode, setViewMode] = useState<'grid' | 'sessions'>('grid');
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
 
   const [allTunes, setAllTunes] = useState<Tune[]>([]);
   const [isTunesLoading, setIsTunesLoading] = useState(true);
@@ -65,7 +66,8 @@ const App: React.FC = () => {
       const matchCollection = filters.collection ? tune.collection === filters.collection : true;
       const matchSession = filters.session ? tune.sourceCollection === filters.session : true;
       const matchInstrument = filters.instrument ? (tune.instruments?.toLowerCase().includes(filters.instrument.toLowerCase()) ?? false) : true;
-      return matchQuery && matchRegion && matchKey && matchCollection && matchSession && matchInstrument;
+      const matchNewOnly = filters.showNewOnly ? (tune.id.startsWith('bonavella-') || tune.id.startsWith('mullagh-')) : true;
+      return matchQuery && matchRegion && matchKey && matchCollection && matchSession && matchInstrument && matchNewOnly;
     });
   }, [filters, allTunes]);
 
@@ -125,7 +127,7 @@ const App: React.FC = () => {
         filename = `${tune.title.replace(/\s+/g, '_')}.mp3`;
         mimeType = 'audio/mpeg';
       } else {
-        // Perform the physical split to WAV
+        // Perform the segment extraction to WAV
         finalBlob = await extractSegment(audioBlob, tune.startTime || 0);
         filename = `${tune.title.replace(/\s+/g, '_')}_Segment.wav`;
         mimeType = 'audio/wav';
@@ -156,6 +158,19 @@ const App: React.FC = () => {
       const next = new Set(prev);
       next.delete(id);
       return next;
+    });
+  };
+
+  const handleClearFilters = () => {
+    setFilters({
+      query: '',
+      region: '',
+      key: '',
+      genre: '',
+      collection: '',
+      session: '',
+      instrument: '',
+      showNewOnly: true
     });
   };
 
@@ -239,7 +254,7 @@ const App: React.FC = () => {
       <SearchFiltersBar 
         filters={filters} 
         setFilters={setFilters} 
-        onClear={() => setFilters({ query: '', region: '', key: '', genre: '', collection: '', session: '', instrument: '' })}
+        onClear={handleClearFilters}
         viewMode={viewMode}
         setViewMode={setViewMode}
         collections={Array.from(new Set(allTunes.map(t => t.collection).filter(Boolean))).sort()}
@@ -261,9 +276,8 @@ const App: React.FC = () => {
           <div className="flex items-center justify-between mb-8 border-b border-stone-200 pb-4">
             <h2 className="text-2xl font-bold text-stone-800 flex items-center gap-3">
               <History className="w-6 h-6 text-amber-700" />
-              {viewMode === 'grid' ? 'BR Taylor Collection - Clare Library' : 'Recording Sessions'}
+              {viewMode === 'sessions' ? 'Recording Sessions' : 'Clare Library Traditional Music Archive'}
             </h2>
-            <p className="text-xs text-stone-400 italic font-medium">Physical splitting enabled for historical study</p>
           </div>
           
           {filteredTunes.length === 0 ? (
@@ -322,7 +336,7 @@ const App: React.FC = () => {
                             <button 
                               onClick={() => handleDownloadSegment(tune)} 
                               className="p-2 bg-amber-600 text-white rounded-full shadow-lg hover:bg-amber-500 transition-all active:scale-90"
-                              title={ (tune.fileCutSource && tune.startTime === 0) ? "Download Tune (.mp3)" : "Export Physical Split (.wav)"}
+                              title={ (tune.fileCutSource && tune.startTime === 0) ? "Download Tune (.mp3)" : "Download Segment (.wav)"}
                             >
                               <FileJson className="w-4 h-4" />
                             </button>
@@ -335,7 +349,95 @@ const App: React.FC = () => {
                 );
               })}
             </div>
+          ) : viewMode === 'list' ? (
+          /* List View */
+          <div className="space-y-2">
+            {filteredTunes.map(tune => (
+              <div key={tune.id} className={`bg-white border border-stone-200 rounded-lg hover:shadow-md transition-all ${currentTune?.id === tune.id ? 'ring-2 ring-amber-500 shadow-lg' : ''}`}>
+                <div className="flex items-center gap-4 p-4">
+                  {/* Play Button */}
+                  <button
+                    onClick={() => handlePlay(tune)}
+                    className={`flex-shrink-0 p-3 rounded-full transition-all ${currentTune?.id === tune.id ? 'bg-amber-600 text-white shadow-inner' : 'bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700'}`}
+                  >
+                    <Play className={`w-5 h-5 ${currentTune?.id === tune.id ? 'fill-current' : ''}`} />
+                  </button>
+
+                  {/* Tune Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-baseline gap-3 mb-1">
+                      <button
+                        onClick={() => handleFilterByTitle(tune.title)}
+                        className="text-lg font-bold text-stone-900 hover:text-amber-600 hover:underline transition-colors truncate"
+                        title="Filter by tune name"
+                      >
+                        {tune.title}
+                      </button>
+                      {tune.sourceCollection && (
+                        <span className="flex-shrink-0 px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full uppercase tracking-tight">
+                          Session
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-4 text-sm text-stone-600">
+                      <button
+                        onClick={() => handleFilterByArtist(tune.artist)}
+                        className="hover:text-amber-600 hover:underline transition-colors truncate"
+                        title="Filter by artist"
+                      >
+                        {tune.artist}
+                      </button>
+                      <span className="text-stone-400">•</span>
+                      <span className="truncate">{tune.region}</span>
+                      <span className="text-stone-400">•</span>
+                      <span>Key of {tune.key}</span>
+                      <span className="text-stone-400">•</span>
+                      <span>{tune.year}</span>
+                    </div>
+                    {tune.collection && (
+                      <button
+                        onClick={() => handleFilterByCollection(tune.collection!)}
+                        className="text-xs text-stone-500 hover:text-amber-600 hover:underline transition-colors mt-1"
+                        title="Filter by collection"
+                      >
+                        {tune.collection}
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-2">
+                    {savedIds.has(tune.id) ? (
+                      <button onClick={() => handleDelete(tune.id)} className="p-2 bg-green-500 text-white rounded-full shadow-lg hover:bg-red-500 transition-all active:scale-90 group" title="Remove Offline Copy">
+                        <CheckCircle2 className="w-4 h-4 block group-hover:hidden" />
+                        <Trash2 className="w-4 h-4 hidden group-hover:block" />
+                      </button>
+                    ) : (
+                      <button onClick={() => handleArchive(tune)} disabled={isArchiving === tune.id} className={`p-2 rounded-full shadow-lg text-white transition-all active:scale-90 ${isArchiving === tune.id ? 'bg-stone-400 animate-pulse' : 'bg-stone-800 hover:bg-amber-600'}`} title="Save Offline">
+                        <Download className="w-4 h-4" />
+                      </button>
+                    )}
+                    <button 
+                      onClick={() => handleDownloadSegment(tune)} 
+                      className="p-2 bg-amber-600 text-white rounded-full shadow-lg hover:bg-amber-500 transition-all active:scale-90"
+                      title={(tune.fileCutSource && tune.startTime === 0) ? "Download Tune (.mp3)" : "Download Segment (.wav)"}
+                    >
+                      <FileJson className="w-4 h-4" />
+                    </button>
+                    <button 
+                      onClick={() => handleShowDetails(tune)}
+                      className="p-2 bg-stone-100 text-stone-600 rounded-full hover:bg-stone-200 transition-all active:scale-90"
+                      title="Show details"
+                    >
+                      <Info className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
           ) : (
+          /* Grid View */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredTunes.map(tune => (
               <div key={tune.id} className="relative">
@@ -367,7 +469,7 @@ const App: React.FC = () => {
                   <button 
                     onClick={() => handleDownloadSegment(tune)} 
                     className="p-2 bg-amber-600 text-white rounded-full shadow-lg hover:bg-amber-500 transition-all active:scale-90"
-                    title={ (tune.fileCutSource && tune.startTime === 0) ? "Download Tune (.mp3)" : "Export Physical Split (.wav)"}
+                    title={ (tune.fileCutSource && tune.startTime === 0) ? "Download Tune (.mp3)" : "Download Segment (.wav)"}
                   >
                     <FileJson className="w-4 h-4" />
                   </button>
