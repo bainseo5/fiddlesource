@@ -55,8 +55,8 @@ const App: React.FC = () => {
   }, []);
 
   const filteredTunes = useMemo(() => {
-    // Simple client-side filtering for now
-    return allTunes.filter(tune => {
+    // 1. Filter by search criteria (excluding "New Only" logic)
+    const result = allTunes.filter(tune => {
       const matchQuery = 
         tune.title.toLowerCase().includes(filters.query.toLowerCase()) ||
         tune.artist.toLowerCase().includes(filters.query.toLowerCase()) ||
@@ -66,9 +66,21 @@ const App: React.FC = () => {
       const matchCollection = filters.collection ? tune.collection === filters.collection : true;
       const matchSession = filters.session ? tune.sourceCollection === filters.session : true;
       const matchInstrument = filters.instrument ? (tune.instruments?.toLowerCase().includes(filters.instrument.toLowerCase()) ?? false) : true;
-      const matchNewOnly = filters.showNewOnly ? (tune.id.startsWith('bonavella-') || tune.id.startsWith('mullagh-')) : true;
-      return matchQuery && matchRegion && matchKey && matchCollection && matchSession && matchInstrument && matchNewOnly;
+      
+      return matchQuery && matchRegion && matchKey && matchCollection && matchSession && matchInstrument;
     });
+
+    // 2. Apply "New Only" logic: Either specific new collections OR last 20
+    if (filters.showNewOnly) {
+       const specificNew = result.filter(t => t.id.startsWith('bonavella-') || t.id.startsWith('mullagh-'));
+       if (specificNew.length > 0) {
+          return specificNew;
+       }
+       // Fallback: Show last 20 added (approximate "Newest"), reversed so newest (end of list) comes first
+       return result.slice(-20).reverse();
+    }
+    
+    return result;
   }, [filters, allTunes]);
 
   // Group tunes by session
