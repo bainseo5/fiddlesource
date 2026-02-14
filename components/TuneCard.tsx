@@ -36,14 +36,21 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
             >
               {tune.title}
             </button>
-            <button 
-              onClick={(e) => { e.stopPropagation(); onFilterByArtist(tune.artist); }}
-              className="text-left text-stone-600 font-medium text-sm hover:text-amber-600 hover:underline transition-colors flex items-center gap-1"
-              title="Filter by artist"
-            >
-              <User className="w-3 h-3" />
-              {tune.artist}
-            </button>
+            <div className="flex items-center gap-1 flex-wrap">
+              <User className="w-3 h-3 text-stone-600 flex-shrink-0" />
+              {tune.artist.split(',').map((artist, index, array) => (
+                <React.Fragment key={index}>
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); onFilterByArtist(artist.trim()); }}
+                    className="text-left text-stone-600 font-medium text-sm hover:text-amber-600 hover:underline transition-colors"
+                    title={`Filter by ${artist.trim()}`}
+                  >
+                    {artist.trim()}
+                  </button>
+                  {index < array.length - 1 && <span className="text-stone-400">,</span>}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
           <button
             onClick={() => onPlay(tune)}

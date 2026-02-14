@@ -39,7 +39,14 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
           </button>
           
           <h1 className="text-3xl md:text-4xl font-bold text-amber-50 mt-16 pr-16">{tune.title}</h1>
-          <p className="text-amber-100 mt-2">{tune.artist}</p>
+          <div className="mt-2 flex flex-wrap gap-x-2 text-amber-100">
+            {tune.artist.split(',').map((artist, index, array) => (
+              <React.Fragment key={index}>
+                <span>{artist.trim()}</span>
+                {index < array.length - 1 && <span className="text-amber-200/50">•</span>}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
 
         {/* Main Content */}
