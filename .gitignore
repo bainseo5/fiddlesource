@@ -25,13 +25,53 @@ dist-ssr
 
 # Audio files - too large for git
 output/
+archive/
 *.mp3
 *.wav
+*.flac
+*.ogg
+*.m4a
+
+# Environment variables
+.env
+.env.local
+.env.production
 
 # Backup data files
 backend/data/*.backup.json
 backend/data/tunes.before-*.json
+backend/data/*.backup-*.json
+*.backup
+*.bak
 
 # Script output files
 scripts/*.json
 !scripts/package.json
+scripts/doolin-tunes.json
+scripts/bonavella-tunes.json
+scripts/mullagh-tunes.json
+scripts/tune-keys-found.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+~*

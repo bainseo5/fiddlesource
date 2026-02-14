@@ -5,3 +5,7 @@ builder = "nixpacks"
 startCommand = "node backend/server.js"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10
+
+# Optional: Volume configuration (created via Railway dashboard)
+# Mount point: /app/output
+# This will persist audio files across deployments

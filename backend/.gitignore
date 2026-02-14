@@ -10,3 +10,14 @@ dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Backup files
+data/*.backup.json
+data/tunes.before-*.json
+data/*.backup-*.json
+*.backup
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
