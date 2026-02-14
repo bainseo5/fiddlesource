@@ -9,9 +9,10 @@ interface AudioPlayerProps {
   onPrev?: () => void;
   onStop?: () => void;
   onError?: (msg: string) => void;
+  autoPlay?: boolean;
 }
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, onPrev, onStop, onError }) => {
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, onPrev, onStop, onError, autoPlay = true }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTimeDisplay, setCurrentTimeDisplay] = useState('0:00');
@@ -35,11 +36,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
       const handleCanPlay = () => {
         if (audioRef.current) {
           audioRef.current.currentTime = targetTime;
-          audioRef.current.play().catch(e => {
-            console.warn("Playback prevented:", e);
-            setIsPlaying(false);
-          });
-          setIsPlaying(true);
+          if (autoPlay) {
+            audioRef.current.play().catch(e => {
+              console.warn("Playback prevented:", e);
+              setIsPlaying(false);
+            });
+            setIsPlaying(true);
+          }
         }
       };
 
@@ -49,11 +52,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
         audioRef.current.addEventListener('canplay', handleCanPlay, { once: true });
       } else {
         audioRef.current.currentTime = targetTime;
-        audioRef.current.play().catch(() => setIsPlaying(false));
-        setIsPlaying(true);
+        if (autoPlay) {
+          audioRef.current.play().catch(() => setIsPlaying(false));
+          setIsPlaying(true);
+        }
       }
     }
-  }, [currentTune]);
+  }, [currentTune, autoPlay]);
 
   const togglePlay = () => {
     if (!audioRef.current || loadError) return;

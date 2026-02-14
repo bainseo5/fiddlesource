@@ -114,6 +114,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
       <AudioPlayer 
         currentTune={currentTune}
         onStop={onClose}
+        autoPlay={false}
       />
     </div>
   );
