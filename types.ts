@@ -24,8 +24,3 @@ export interface SearchFilters {
   key: string;
   genre: string;
 }
-
-export interface AIChatMessage {
-  role: 'user' | 'model';
-  text: string;
-}

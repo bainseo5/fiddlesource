@@ -4,12 +4,11 @@ import { SearchFiltersBar } from './components/SearchFilters';
 import { TuneCard } from './components/TuneCard';
 import { TuneDetailPage } from './components/TuneDetailPage';
 import { AudioPlayer } from './components/AudioPlayer';
-import { Tune, SearchFilters, AIChatMessage } from './types';
-import { getTuneInsight, chatAboutTunes } from './geminiService';
+import { Tune, SearchFilters } from './types';
 import { saveToDatabase, getFromDatabase, getAllSavedIds, removeFromDatabase } from './db';
 import { extractSegment } from './audioUtils';
 import * as api from './api';
-import { History, MessageSquare, X, Send, Sparkles, Star, Headphones, AlertTriangle, Download, Trash2, CheckCircle2, FileJson, Loader2, Upload, Cloud, FileAudio, Link } from 'lucide-react';
+import { History, X, Star, Headphones, AlertTriangle, Download, Trash2, CheckCircle2, FileJson, Loader2, Upload, Cloud, FileAudio, Link } from 'lucide-react';
 
 const App: React.FC = () => {
   const [filters, setFilters] = useState<SearchFilters>({
@@ -24,10 +23,6 @@ const App: React.FC = () => {
   const [currentTune, setCurrentTune] = useState<Tune | null>(null);
   const [selectedTune, setSelectedTune] = useState<Tune | null>(null);
   const [detailedTune, setDetailedTune] = useState<Tune | null>(null);
-  const [insight, setInsight] = useState<string>('');
-  const [isInsightLoading, setIsInsightLoading] = useState(false);
-  const [showChat, setShowChat] = useState(false);
-  const [chatInput, setChatInput] = useState('');
   const [audioError, setAudioError] = useState<string | null>(null);
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set<string>());
   const [isArchiving, setIsArchiving] = useState<string | null>(null);
@@ -38,11 +33,6 @@ const App: React.FC = () => {
   const [importedTunes, setImportedTunes] = useState<Tune[]>([]);
   const [importTab, setImportTab] = useState<'file' | 'url'>('file');
   const [importUrl, setImportUrl] = useState('');
-
-  const [chatMessages, setChatMessages] = useState<AIChatMessage[]>([
-    { role: 'model', text: 'Welcome to the Traditional Music Archive. I can help you save recordings locally or extract specific tunes as separate files.' }
-  ]);
-  const [isChatLoading, setIsChatLoading] = useState(false);
 
   // Load tunes from API on mount
   useEffect(() => {
@@ -182,19 +172,6 @@ const App: React.FC = () => {
 
   const handleShowDetails = (tune: Tune) => {
     setDetailedTune(tune);
-  };
-
-  const handleSendMessage = async () => {
-    if (!chatInput.trim()) return;
-    const userMsg: AIChatMessage = { role: 'user', text: chatInput };
-    const newMessages = [...chatMessages, userMsg];
-    setChatMessages(newMessages);
-    setChatInput('');
-    setIsChatLoading(true);
-
-    const responseText = await chatAboutTunes(newMessages);
-    setChatMessages(prev => [...prev, { role: 'model', text: responseText || 'No response.' }]);
-    setIsChatLoading(false);
   };
 
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -361,16 +338,12 @@ const App: React.FC = () => {
             <p className="text-stone-400 font-medium italic serif text-xl">Traditional Music Archive</p>
           </div>
           <div className="flex items-center gap-4">
-            <button 
+            <button
                 onClick={() => setIsImportModalOpen(true)}
                 className="flex items-center gap-2 px-4 py-3 bg-stone-800 hover:bg-stone-700 rounded-full text-sm font-bold tracking-wide transition-all border border-stone-700 text-stone-300"
             >
                 <Upload className="w-4 h-4" />
                 IMPORT
-            </button>
-            <button onClick={() => setShowChat(true)} className="flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-500 rounded-full text-sm font-bold tracking-wide transition-all shadow-lg active:scale-95 border-b-4 border-amber-800">
-              <Sparkles className="w-4 h-4" />
-              ARCHIVE ASSISTANT
             </button>
           </div>
         </div>
@@ -457,42 +430,11 @@ const App: React.FC = () => {
               </div>
               <button onClick={() => setSelectedTune(null)} className="p-2 hover:bg-stone-200 rounded-full transition-colors text-stone-400"><X className="w-8 h-8" /></button>
             </div>
-            <div className="p-10">
-              <div className="bg-amber-50 border border-amber-100 rounded-2xl p-8 relative overflow-hidden group">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-6 h-6 rounded-full bg-amber-200 flex items-center justify-center"><Sparkles className="w-3.5 h-3.5 text-amber-700" /></div>
-                  <span className="text-xs font-black text-amber-900 uppercase tracking-widest">Ethnomusicologist Insight</span>
-                </div>
-                {isInsightLoading ? <div className="h-4 bg-amber-200/50 rounded-full w-full animate-pulse"></div> : <p className="text-stone-800 italic serif text-xl leading-relaxed">{insight}</p>}
-              </div>
-            </div>
             <div className="p-8 bg-stone-900 flex gap-4">
                <button onClick={() => { handlePlay(selectedTune!); setSelectedTune(null); }} className="flex-1 bg-amber-600 text-white py-4 rounded-xl font-black text-sm tracking-[0.15em] hover:bg-amber-500 transition-all uppercase shadow-xl active:scale-95">PLAY RECORDING</button>
                <button onClick={() => handleDownloadSegment(selectedTune!)} className="px-6 bg-stone-800 text-white rounded-xl hover:bg-stone-700 transition-all flex items-center justify-center">
                  <Download className="w-5 h-5" />
                </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {showChat && (
-        <div className="fixed inset-y-0 right-0 w-full md:w-[450px] bg-white shadow-2xl z-[70] flex flex-col animate-in slide-in-from-right duration-500 border-l border-stone-200">
-          <div className="p-6 border-b border-stone-100 bg-stone-900 text-stone-100 flex justify-between items-center">
-            <h3 className="font-bold text-lg">Archive Assistant</h3>
-            <button onClick={() => setShowChat(false)} className="p-2 hover:bg-stone-800 rounded-full"><X className="w-6 h-6" /></button>
-          </div>
-          <div className="flex-1 overflow-y-auto p-6 space-y-6">
-            {chatMessages.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-4 rounded-2xl text-sm ${msg.role === 'user' ? 'bg-amber-600 text-white' : 'bg-white border border-stone-200'}`}>{msg.text}</div>
-              </div>
-            ))}
-          </div>
-          <div className="p-6 border-t border-stone-100">
-            <div className="flex gap-3">
-              <input type="text" className="flex-1 px-5 py-3 bg-stone-100 rounded-2xl focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Ask about the archive..." value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()} />
-              <button onClick={handleSendMessage} className="w-12 h-12 flex items-center justify-center bg-stone-900 text-white rounded-2xl"><Send className="w-5 h-5" /></button>
             </div>
           </div>
         </div>
