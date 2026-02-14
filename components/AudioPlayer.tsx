@@ -104,6 +104,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
     let message = "An unknown audio error occurred.";
     
     if (error) {
+      console.error("Media Error Details:", error, audioRef.current?.src);
       switch (error.code) {
         case 1: message = "The fetching process was aborted."; break;
         case 2: message = "A network error occurred."; break;
@@ -111,9 +112,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
         case 4: 
           message = "The source is not supported or access is denied.";
           if (audioRef.current?.src.includes('corsproxy.io')) {
-            message += " This could be a CORS issue with the proxy or original server. Try again, check your internet connection, or disable any content blockers.";
+             message += " This could be a CORS issue with the proxy or original server.";
+          } else if (audioRef.current?.src.startsWith('blob:')) {
+             message += " There might be an issue with the saved offline file. Try removing it and saving again.";
           } else {
-            message += " Ensure the audio format is supported (e.g., MP3, WAV) and no content blockers are active.";
+             message += " Ensure the audio format is supported.";
           }
           break;
       }

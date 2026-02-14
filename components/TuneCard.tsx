@@ -84,10 +84,22 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
     // Otherwise, save it
     try {
       // 1. Fetch the audio blob
-      const response = await fetch(tune.audioUrl);
+      // Use cache: 'no-store' to ensure we get a fresh copy and avoid CORS/No-CORS cache conflicts
+      // (e.g. if the audio was previously played via <audio> which uses no-cors)
+      const response = await fetch(tune.audioUrl, { cache: 'no-store' });
       if (!response.ok) throw new Error('Network response was not ok');
-      const blob = await response.blob();
       
+      let blob = await response.blob();
+      
+      // Ensure the blob has a correct MIME type if missing
+      if (!blob.type) {
+        const contentType = response.headers.get('content-type') || 'audio/mpeg';
+        console.log(`Blob missing type, forcing: ${contentType}`);
+        blob = new Blob([blob], { type: contentType });
+      }
+
+      console.log(`Saving blob for ${tune.title}: size=${blob.size}, type=${blob.type}`);
+
       // 2. Save using our db utility
       await saveToDatabase(tune.id, blob, tune);
       
