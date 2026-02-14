@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Tune, AIChatMessage } from '../types';
+import { Tune } from '../types';
 import { AudioPlayer } from './AudioPlayer';
-import { X, ArrowLeft, Download, Heart, Share2, Sparkles } from 'lucide-react';
-import { getTuneInsight } from '../geminiService';
+import { X, ArrowLeft, Download, Heart, Share2 } from 'lucide-react';
 
 interface TuneDetailPageProps {
   tune: Tune;
@@ -19,22 +18,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
   onSave,
   onRemove
 }) => {
-  const [insight, setInsight] = useState<string>('');
-  const [isLoadingInsight, setIsLoadingInsight] = useState(false);
   const [currentTune] = useState<Tune>(tune);
-
-  const handleGetInsight = async () => {
-    setIsLoadingInsight(true);
-    try {
-      const insight = await getTuneInsight(tune);
-      setInsight(insight);
-    } catch (error) {
-      console.error('Failed to get insight:', error);
-      setInsight('Failed to load insight. Please try again.');
-    } finally {
-      setIsLoadingInsight(false);
-    }
-  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 z-40 overflow-y-auto pt-20 pb-40">
@@ -94,28 +78,6 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
             <p className="text-stone-200 mt-1">{tune.source}</p>
             {tune.sourceCollection && (
               <p className="text-stone-400 text-sm mt-1">{tune.sourceCollection}</p>
-            )}
-          </div>
-
-          {/* AI Insight Section */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-amber-50 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-amber-400" />
-                Musicology Insight
-              </h2>
-              <button
-                onClick={handleGetInsight}
-                disabled={isLoadingInsight}
-                className="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-500 disabled:bg-stone-700 disabled:text-stone-400 transition-colors text-sm font-medium"
-              >
-                {isLoadingInsight ? 'Loading...' : 'Get Insight'}
-              </button>
-            </div>
-            {insight && (
-              <div className="bg-stone-800 rounded p-4 text-stone-200 whitespace-pre-wrap text-sm leading-relaxed">
-                {insight}
-              </div>
             )}
           </div>
 
