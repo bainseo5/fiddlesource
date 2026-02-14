@@ -1,5 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
+console.log('API Base URL:', API_BASE_URL);
+
 interface Tune {
   id: string;
   title: string;
@@ -21,8 +23,13 @@ interface Tune {
 
 // TUNES
 export const fetchAllTunes = async (): Promise<Tune[]> => {
-  const response = await fetch(`${API_BASE_URL}/tunes`);
-  if (!response.ok) throw new Error('Failed to fetch tunes');
+  const url = `${API_BASE_URL}/tunes`;
+  console.log('Fetching tunes from:', url);
+  const response = await fetch(url);
+  if (!response.ok) {
+    console.error('Fetch failed:', response.status, response.statusText);
+    throw new Error('Failed to fetch tunes');
+  }
   return response.json();
 };
 
