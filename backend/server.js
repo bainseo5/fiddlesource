@@ -4,6 +4,17 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Global error handlers
+process.on('uncaughtException', (err) => {
+  console.error('UNCAUGHT EXCEPTION:', err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.error('UNHANDLED REJECTION:', err);
+  process.exit(1);
+});
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, 'data');
 const TUNES_FILE = path.join(DATA_DIR, 'tunes.json');
