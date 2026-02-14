@@ -14,12 +14,12 @@ Track which sessions from the [Clare Library Live Recordings](https://www.clarel
 **Source:** [BR Taylor Collection Index](https://www.clarelibrary.ie/eolas/coclare/music/live/index_taylor.htm)  
 **Date Range:** 1962-1997
 
-### Status: 2/40+ tapes added
+### Status: 1/40+ tapes added
 
 | Status | Tape ID | Session/Recording | Musicians | Date | Location |
 |--------|---------|-------------------|-----------|------|----------|
 | ✅ | T85 | O'Connor's Bar Session | Micho Russell, Peadar O'Loughlin, Willie Shannon, Paddy Killourhy, Willie Clancy, Joe Cuneen | 1962 | O'Connor's Bar, Doolin |
-| 🔄 | T19-2 | Katty's Bar Session | Pat Crehan, Michael Downes, Jim McKee | 11 July 1976 | Katty's Bar, Mullagh |
+| ⬜ | T19-2 | Katty's Bar Session | Pat Crehan, Michael Downes, Jim McKee | 11 July 1976 | Katty's Bar, Mullagh |
 | ⬜ | T33 | Katty's Bar Session | Martin 'Junior' Crehan, Michael Downes, Barry Taylor | 26 Sept 1977 | Katty's Bar, Mullagh |
 | ⬜ | T24 | Solo: Martin 'Junior' Crehan | Martin 'Junior' Crehan, fiddle | 8 July 1976 | Bonavella, Mullagh |
 | ⬜ | T79-1 | Solo: Martin 'Junior' Crehan | Martin 'Junior' Crehan, fiddle | Unknown | Unknown |
@@ -63,11 +63,11 @@ Track which sessions from the [Clare Library Live Recordings](https://www.clarel
 **Source:** [John Joe Healy Collection Index](https://www.clarelibrary.ie/eolas/coclare/music/live/index_healy.htm)  
 **Date Range:** 1961-1977
 
-### Status: 1/40+ tapes added
+### Status: 0/40+ tapes added
 
 | Status | Tape ID | Session/Recording | Musicians | Date | Location |
 |--------|---------|-------------------|-----------|------|----------|
-| ✅ | JH12 | Crehans' Home Session | Willie Clancy, Seamus Ennis, Martin 'Junior' Crehan, Angela Crehan, Ita Crehan | Oct 1961 | Bonavella, Mullagh |
+| ⬜ | JH12 | Crehans' Home Session | Willie Clancy, Seamus Ennis, Martin 'Junior' Crehan, Angela Crehan, Ita Crehan | Oct 1961 | Bonavella, Mullagh |
 | ⬜ | JH15 | Duo: Miko Doyle & Thady Casey | Miko Doyle, Thady Casey | Unknown | Unknown |
 | ⬜ | JH17 | Session | Thady Casey, Seamus Ennis, James Flynn, JC Talty | Unknown | Spanish Point |
 | ⬜ | JH34 | Solo: Bobby Casey | Bobby Casey, fiddle | 1970s | Unknown |
