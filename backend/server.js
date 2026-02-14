@@ -19,7 +19,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, 'data');
 const TUNES_FILE = path.join(DATA_DIR, 'tunes.json');
 const STATS_FILE = path.join(DATA_DIR, 'stats.json');
-const AUDIO_DIR = path.join(__dirname, '..', '..', 'output');
+const AUDIO_DIR = path.join(__dirname, '..', 'output');
 const FRONTEND_DIR = path.join(__dirname, '..', 'dist');
 
 // Ensure data directory exists
