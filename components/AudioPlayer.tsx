@@ -194,8 +194,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-4 w-[250px] justify-end">
-            <div className="flex items-center gap-3 w-full">
+          <div className="flex items-center gap-4 w-full md:w-[250px] justify-center md:justify-end mt-2 md:mt-0">
+            <div className="flex items-center gap-3 w-full max-w-xs md:max-w-none">
               <label className="text-xs text-stone-400 whitespace-nowrap">Speed:</label>
               <div className="flex items-center gap-2 flex-1">
                 <input 
