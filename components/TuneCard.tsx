@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tune, SearchFilters } from '../types';
-import { Play, MapPin, Music, Calendar, Info, Layers, Library, User, Download, HardDrive } from 'lucide-react';
+import { Play, MapPin, Music, Calendar, Info, Layers, Library, User, Download, HardDrive, Check } from 'lucide-react';
+import { saveToDatabase, getFromDatabase, removeFromDatabase } from '../db';
 
 interface TuneCardProps {
   tune: Tune;
@@ -15,6 +16,22 @@ interface TuneCardProps {
 }
 
 export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails, onFilterByTitle, onFilterByArtist, onFilterByCollection, onFilterBySession, isPlaying }) => {
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    const checkOfflineStatus = async () => {
+      try {
+        const result = await getFromDatabase(tune.id);
+        if (mounted) setIsOffline(!!result);
+      } catch (error) {
+        console.error('Error checking offline status:', error);
+      }
+    };
+    checkOfflineStatus();
+    return () => { mounted = false; };
+  }, [tune.id]);
+
   const handleDownload = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
@@ -42,41 +59,52 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
 
   const handleSaveOffline = async (e: React.MouseEvent) => {
     e.stopPropagation();
+    
+    if (isOffline) {
+      // If already saved, unsave it
+      try {
+        await removeFromDatabase(tune.id);
+        
+        // Also try to clean up from cache if it was stored there by previous version
+        try {
+          const cache = await caches.open('tunes-offline-v1');
+          await cache.delete(tune.audioUrl);
+        } catch (err) {
+          // Ignore cache errors
+        }
+        
+        setIsOffline(false);
+      } catch (error) {
+        console.error('Failed to remove offline tune:', error);
+        alert('Failed to remove from offline storage.');
+      }
+      return;
+    }
+
+    // Otherwise, save it
     try {
-      // Save to browser cache for offline access
-      const cache = await caches.open('tunes-offline-v1');
-      await cache.add(tune.audioUrl);
+      // 1. Fetch the audio blob
+      const response = await fetch(tune.audioUrl);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const blob = await response.blob();
       
-      // Also save tune metadata to IndexedDB
-      const db = await openDB();
-      const tx = db.transaction('offline-tunes', 'readwrite');
-      await tx.objectStore('offline-tunes').put({
-        ...tune,
-        savedAt: new Date().toISOString()
-      });
-      await tx.done;
+      // 2. Save using our db utility
+      await saveToDatabase(tune.id, blob, tune);
       
-      alert(`"${tune.title}" saved for offline playback!`);
+      // 3. Keep cache logic for redundancy/legacy support? Or remove it?
+      // Let's keep it for now as it might be used by service worker fetch handler
+      try {
+        const cache = await caches.open('tunes-offline-v1');
+        await cache.put(tune.audioUrl, new Response(blob));
+      } catch (err) {
+        console.warn('Cache storage failed, but IndexedDB succeeded', err);
+      }
+      
+      setIsOffline(true);
     } catch (error) {
       console.error('Save offline failed:', error);
       alert('Failed to save offline. Please try again.');
     }
-  };
-
-  const openDB = async () => {
-    return new Promise<IDBDatabase>((resolve, reject) => {
-      const request = indexedDB.open('tunes-archive', 1);
-      
-      request.onerror = () => reject(request.error);
-      request.onsuccess = () => resolve(request.result);
-      
-      request.onupgradeneeded = (event) => {
-        const db = (event.target as IDBOpenDBRequest).result;
-        if (!db.objectStoreNames.contains('offline-tunes')) {
-          db.createObjectStore('offline-tunes', { keyPath: 'id' });
-        }
-      };
-    });
   };
 
   return (
@@ -141,10 +169,10 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
             </button>
             <button
               onClick={handleSaveOffline}
-              className="p-3 rounded-full bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700 transition-all"
-              title="Save offline"
+              className={`p-3 rounded-full transition-all ${isOffline ? 'bg-amber-100 text-amber-700 shadow-inner' : 'bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700'}`}
+              title={isOffline ? "Remove from offline storage" : "Save for offline use"}
             >
-              <HardDrive className="w-5 h-5" />
+              {isOffline ? <Check className="w-5 h-5 stroke-[3]" /> : <HardDrive className="w-5 h-5" />}
             </button>
           </div>
         </div>

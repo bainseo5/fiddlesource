@@ -5,15 +5,15 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     return {
       server: {
-        port: 3000,
+        port: 5173,
         host: '0.0.0.0',
         proxy: {
-          '/api': {
-            target: 'http://localhost:3001',
+          '/api/': {
+            target: 'http://localhost:3000',
             changeOrigin: true,
           },
-          '/audio': {
-            target: 'http://localhost:3001',
+          '/audio/': {
+            target: 'http://localhost:3000',
             changeOrigin: true,
           }
         }

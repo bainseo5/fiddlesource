@@ -45,11 +45,33 @@ const writeJsonFile = (filePath, data) => {
 };
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Set permissive CSP for development to avoid browser/devtools issues
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:; connect-src *;");
+  next();
+});
+
+// Add a root route for better DX when accessing the API port directly
+app.get('/', (req, res) => {
+  if (fs.existsSync(FRONTEND_DIR)) {
+    res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
+  } else {
+    res.send(`
+      <body style="font-family: sans-serif; padding: 2rem; line-height: 1.5;">
+        <h1>🎵 Tunes API Server</h1>
+        <p>The backend is running successfully on port ${PORT}.</p>
+        <p><strong>Frontend:</strong> To view the app, run <code>npm run dev</code> and go to <a href="http://localhost:5173">http://localhost:5173</a>.</p>
+        <p><strong>Status:</strong> ${fs.existsSync(FRONTEND_DIR) ? '✅ Frontend build found' : '⚠️ Frontend build (dist) not found - running in API-only mode'}</p>
+      </body>
+    `);
+  }
+});
 
 // Serve static audio files (if they exist)
 if (fs.existsSync(AUDIO_DIR)) {

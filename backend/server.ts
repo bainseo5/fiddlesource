@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 import { v4 as uuidv4 } from 'crypto';
 import { initializeDatabase, db } from './db.js';
 import { Tune, Playlist, PlaybackHistoryEntry, User } from './types.js';
@@ -10,15 +11,32 @@ import { Tune, Playlist, PlaybackHistoryEntry, User } from './types.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize database
+// Load tunes from JSON file
+const TUNES_FILE = path.join(__dirname, 'data', 'tunes.json');
+let tunesData: Record<string, Tune> = {};
+try {
+  const tunesJson = fs.readFileSync(TUNES_FILE, 'utf-8');
+  tunesData = JSON.parse(tunesJson);
+  console.log(`✓ Loaded ${Object.keys(tunesData).length} tunes from JSON`);
+} catch (error) {
+  console.error('Error loading tunes.json:', error);
+}
+
+// Initialize database (for playlists and playback history)
 initializeDatabase();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Set permissive CSP for development to avoid browser/devtools issues
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:; connect-src *;");
+  next();
+});
 
 // Serve audio files from the output directory
 app.use('/audio', express.static(path.join(__dirname, '..', 'output')));
@@ -31,7 +49,7 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 // Get all tunes
 app.get('/api/tunes', (req, res) => {
   try {
-    const tunes = db.prepare('SELECT * FROM tunes ORDER BY id').all() as Tune[];
+    const tunes = Object.values(tunesData);
     res.json(tunes);
   } catch (error) {
     console.error('Error fetching tunes:', error);
@@ -42,7 +60,7 @@ app.get('/api/tunes', (req, res) => {
 // Get single tune by ID
 app.get('/api/tunes/:id', (req, res) => {
   try {
-    const tune = db.prepare('SELECT * FROM tunes WHERE id = ?').get(req.params.id) as Tune | undefined;
+    const tune = tunesData[req.params.id];
     if (!tune) {
       res.status(404).json({ error: 'Tune not found' });
       return;
@@ -310,13 +328,30 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK' });
 });
 
+// Root route
+app.get('/', (req, res) => {
+  res.send(`
+    <body style="font-family: sans-serif; padding: 2rem; line-height: 1.5;">
+      <h1>🎵 Tunes API Server (TypeScript)</h1>
+      <p>The backend is running successfully on port ${PORT}.</p>
+      <p><strong>Frontend:</strong> To view the app, run <code>npm run dev</code> and go to <a href="http://localhost:5173">http://localhost:5173</a>.</p>
+    </body>
+  `);
+});
+
 // SPA fallback - serve index.html for all non-API routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+  const indexPath = path.join(__dirname, '..', 'dist', 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    // If we're not at the root and not in API, it's a real 404
+    res.status(404).json({ error: 'Not found' });
+  }
 });
 
 // Start server
 app.listen(PORT, () => {
   console.log(`🎵 Tunes API server running on http://localhost:${PORT}`);
-  console.log('Try: curl http://localhost:3001/api/tunes');
+  console.log(`Try: curl http://localhost:${PORT}/api/tunes`);
 });
