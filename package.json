@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "postinstall": "cd backend && npm ci"
   },
   "dependencies": {
     "@google/genai": "^1.41.0",
