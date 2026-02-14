@@ -90,13 +90,33 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
     }
   };
 
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newProgress = parseFloat(e.target.value);
+    
+    // Optimistic update for UI responsiveness
+    setProgress(newProgress);
+    
+    if (audioRef.current) {
+      const duration = audioRef.current.duration;
+      if (!isNaN(duration) && duration > 0) {
+        audioRef.current.currentTime = (newProgress / 100) * duration;
+      }
+    }
+  };
+
   const handleTimeUpdate = () => {
     if (!audioRef.current) return;
     const current = audioRef.current.currentTime;
     const total = audioRef.current.duration;
-    setProgress((current / total) * 100);
+    
+    // Only update progress if we have a valid duration
+    // This prevents the slider from jumping when metadata loads or on empty states
+    if (!isNaN(total) && total > 0) {
+       setProgress((current / total) * 100);
+       setDurationDisplay(formatTime(total));
+    }
+    
     setCurrentTimeDisplay(formatTime(current));
-    if (!isNaN(total)) setDurationDisplay(formatTime(total));
   };
 
   const handleMediaError = () => {
@@ -187,12 +207,15 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ currentTune, onNext, o
             
             <div className="w-full flex items-center gap-3">
               <span className="text-[10px] font-mono text-stone-500 w-10 text-right">{currentTimeDisplay}</span>
-              <div className="flex-1 h-1.5 bg-stone-800 rounded-full overflow-hidden relative group cursor-pointer">
-                <div 
-                  className={`absolute top-0 left-0 h-full transition-all ${loadError ? 'bg-red-900' : 'bg-amber-500 group-hover:bg-amber-400'}`} 
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
+              <input 
+                type="range"
+                min="0"
+                max="100"
+                step="0.1"
+                value={progress || 0}
+                onChange={handleSeek}
+                className={`flex-1 h-2 bg-stone-700 rounded-lg cursor-pointer ${loadError ? 'accent-red-600' : 'accent-amber-500'}`}
+              />
               <span className="text-[10px] font-mono text-stone-500 w-10">{durationDisplay}</span>
             </div>
           </div>
