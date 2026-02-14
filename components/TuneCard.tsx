@@ -28,7 +28,7 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
       
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
-          <div className="pr-12 pl-20">
+          <div className="flex-1 min-w-0 pr-4">
             <button
               onClick={(e) => { e.stopPropagation(); onFilterByTitle(tune.title); }}
               className="text-left text-xl font-bold text-stone-900 mb-1 leading-tight hover:text-amber-600 hover:underline transition-colors line-clamp-2"
