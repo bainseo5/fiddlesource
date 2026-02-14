@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node backend/server.js",
-    "postinstall": "cd backend && npm ci"
+    "postinstall": "cd backend && npm ci || true"
   },
   "dependencies": {
     "@google/genai": "^1.41.0",
