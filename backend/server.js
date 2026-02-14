@@ -40,8 +40,13 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Serve static audio files
-app.use('/audio', express.static(AUDIO_DIR));
+// Serve static audio files (if they exist)
+if (fs.existsSync(AUDIO_DIR)) {
+  app.use('/audio', express.static(AUDIO_DIR));
+} else {
+  console.log('Warning: Audio directory not found at', AUDIO_DIR);
+  console.log('Audio files will not be served.');
+}
 
 // Serve frontend build (if it exists)
 if (fs.existsSync(FRONTEND_DIR)) {
@@ -146,7 +151,18 @@ app.get('*', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🎵 Tunes API server running on http://localhost:${PORT}`);
-  console.log(`📊 Tunes loaded: ${Object.keys(tunes).length}`);
-  console.log('Try: http://localhost:3001/api/health');
+  console.log(`\n🎵 Tunes API started successfully on port ${PORT}`);
+  console.log(`📊 Loaded: ${Object.keys(tunes).length} tunes`);
+  console.log(`Available:`);
+  if (fs.existsSync(AUDIO_DIR)) {
+    console.log(`  ✓ Audio files`);
+  } else {
+    console.log(`  ✗ Audio files not found`);
+  }
+  if (fs.existsSync(FRONTEND_DIR)) {
+    console.log(`  ✓ Frontend build`);
+  } else {
+    console.log(`  ✗ Frontend build not found (API only)`);
+  }
+  console.log('');
 });
