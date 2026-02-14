@@ -161,7 +161,7 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`\n🎵 Tunes API started successfully on port ${PORT}`);
   console.log(`📊 Loaded: ${Object.keys(tunes).length} tunes`);
   console.log(`Available:`);
