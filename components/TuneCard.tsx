@@ -24,7 +24,7 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
       
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
-          <div className="pr-12">
+          <div className="pr-12 pl-20">
             <h3 className="text-xl font-bold text-stone-900 mb-1 leading-tight group-hover:text-amber-800 transition-colors line-clamp-2">
               {tune.title}
             </h3>
