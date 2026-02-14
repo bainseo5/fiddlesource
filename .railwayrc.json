@@ -1,0 +1,4 @@
+{
+  "builder": "nixpacks",
+  "startCommand": "node backend/server.js"
+}
