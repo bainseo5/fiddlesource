@@ -43,20 +43,40 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
   const handleSaveOffline = async (e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      // Same download functionality but for offline storage
-      const response = await fetch(tune.audioUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${tune.title} - ${tune.artist}.mp3`;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      // Save to browser cache for offline access
+      const cache = await caches.open('tunes-offline-v1');
+      await cache.add(tune.audioUrl);
+      
+      // Also save tune metadata to IndexedDB
+      const db = await openDB();
+      const tx = db.transaction('offline-tunes', 'readwrite');
+      await tx.objectStore('offline-tunes').put({
+        ...tune,
+        savedAt: new Date().toISOString()
+      });
+      await tx.done;
+      
+      alert(`"${tune.title}" saved for offline playback!`);
     } catch (error) {
       console.error('Save offline failed:', error);
+      alert('Failed to save offline. Please try again.');
     }
+  };
+
+  const openDB = async () => {
+    return new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open('tunes-archive', 1);
+      
+      request.onerror = () => reject(request.error);
+      request.onsuccess = () => resolve(request.result);
+      
+      request.onupgradeneeded = (event) => {
+        const db = (event.target as IDBOpenDBRequest).result;
+        if (!db.objectStoreNames.contains('offline-tunes')) {
+          db.createObjectStore('offline-tunes', { keyPath: 'id' });
+        }
+      };
+    });
   };
 
   return (
