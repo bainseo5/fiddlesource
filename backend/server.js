@@ -53,7 +53,14 @@ app.use(express.json());
 
 // Serve static audio files (if they exist)
 if (fs.existsSync(AUDIO_DIR)) {
-  app.use('/audio', express.static(AUDIO_DIR));
+  app.use('/audio', express.static(AUDIO_DIR, {
+    setHeaders: (res, path) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Accept-Ranges', 'bytes');
+      res.setHeader('Content-Type', 'audio/mpeg');
+    }
+  }));
+  console.log('✓ Audio files directory configured');
 } else {
   console.log('Warning: Audio directory not found at', AUDIO_DIR);
   console.log('Audio files will not be served.');
