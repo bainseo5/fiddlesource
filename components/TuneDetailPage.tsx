@@ -38,7 +38,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
             <X className="w-6 h-6" />
           </button>
           
-          <h1 className="text-3xl md:text-4xl font-bold text-amber-50 mt-8 pr-16">{tune.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-amber-50 mt-16 pr-16">{tune.title}</h1>
           <p className="text-amber-100 mt-2">{tune.artist}</p>
         </div>
 
