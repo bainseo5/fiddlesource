@@ -89,7 +89,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
                 className="flex-1 px-4 py-3 bg-red-600 text-white rounded hover:bg-red-500 transition-colors font-semibold flex items-center justify-center gap-2"
               >
                 <Heart className="w-5 h-5 fill-current" />
-                Remove from Archive
+                Remove Offline Copy
               </button>
             ) : (
               <button
@@ -97,7 +97,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
                 className="flex-1 px-4 py-3 bg-amber-600 text-white rounded hover:bg-amber-500 transition-colors font-semibold flex items-center justify-center gap-2"
               >
                 <Heart className="w-5 h-5" />
-                Save to Archive
+                Save Offline
               </button>
             )}
             <button

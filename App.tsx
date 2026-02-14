@@ -236,12 +236,12 @@ const App: React.FC = () => {
                 <div className="absolute top-2 left-2 flex gap-1.5 z-20">
                   {/* Fix: `savedIds` is now correctly a Set, so `.has()` is valid. */}
                   {savedIds.has(tune.id) ? (
-                    <button onClick={() => handleDelete(tune.id)} className="p-2 bg-green-500 text-white rounded-full shadow-lg hover:bg-red-500 transition-all active:scale-90 group" title="Remove from Local DB">
+                    <button onClick={() => handleDelete(tune.id)} className="p-2 bg-green-500 text-white rounded-full shadow-lg hover:bg-red-500 transition-all active:scale-90 group" title="Remove Offline Copy">
                       <CheckCircle2 className="w-4 h-4 block group-hover:hidden" />
                       <Trash2 className="w-4 h-4 hidden group-hover:block" />
                     </button>
                   ) : (
-                    <button onClick={() => handleArchive(tune)} disabled={isArchiving === tune.id} className={`p-2 rounded-full shadow-lg text-white transition-all active:scale-90 ${isArchiving === tune.id ? 'bg-stone-400 animate-pulse' : 'bg-stone-800 hover:bg-amber-600'}`} title="Save to Database">
+                    <button onClick={() => handleArchive(tune)} disabled={isArchiving === tune.id} className={`p-2 rounded-full shadow-lg text-white transition-all active:scale-90 ${isArchiving === tune.id ? 'bg-stone-400 animate-pulse' : 'bg-stone-800 hover:bg-amber-600'}`} title="Save Offline">
                       <Download className="w-4 h-4" />
                     </button>
                   )}
