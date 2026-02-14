@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Tune, SearchFilters } from '../types';
-import { Play, MapPin, Music, Calendar, Info, Scissors, Layers, Library, User } from 'lucide-react';
+import { Play, MapPin, Music, Calendar, Info, Scissors, Layers, Library, User, Download, Bookmark } from 'lucide-react';
 
 interface TuneCardProps {
   tune: Tune;
@@ -28,16 +28,16 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
       
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
-          <div className="flex-1 min-w-0 pl-16 pr-14">
+          <div className="flex-1 min-w-0 pr-4">
             <button
               onClick={(e) => { e.stopPropagation(); onFilterByTitle(tune.title); }}
-              className="text-left text-xl font-bold text-stone-900 mb-1 leading-tight hover:text-amber-600 hover:underline transition-colors line-clamp-2"
+              className="text-left text-xl font-bold text-stone-900 mb-1 leading-tight hover:text-amber-600 hover:underline transition-colors"
               title="Filter by tune name"
             >
               {tune.title}
             </button>
-            <div className="flex items-center gap-1 flex-wrap">
-              <User className="w-3 h-3 text-stone-600 flex-shrink-0" />
+            <div className="flex items-center flex-wrap">
+              <User className="w-3 h-3 text-stone-600 flex-shrink-0 mr-1" />
               {tune.artist.split(',').map((artist, index, array) => (
                 <React.Fragment key={index}>
                   <button 
@@ -47,17 +47,35 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
                   >
                     {artist.trim()}
                   </button>
-                  {index < array.length - 1 && <span className="text-stone-400">,</span>}
+                  {index < array.length - 1 && <span className="text-stone-400 mx-0.5">,</span>}
                 </React.Fragment>
               ))}
             </div>
           </div>
-          <button
-            onClick={() => onPlay(tune)}
-            className={`flex-shrink-0 p-3 rounded-full transition-all ${isPlaying ? 'bg-amber-600 text-white shadow-inner' : 'bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700'}`}
-          >
-            <Play className={`w-5 h-5 ${isPlaying ? 'fill-current' : ''}`} />
-          </button>
+          {/* Traffic light button stack */}
+          <div className="flex flex-col gap-2 flex-shrink-0">
+            <button
+              onClick={() => onPlay(tune)}
+              className={`p-3 rounded-full transition-all ${isPlaying ? 'bg-amber-600 text-white shadow-inner' : 'bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700'}`}
+              title="Play"
+            >
+              <Play className={`w-5 h-5 ${isPlaying ? 'fill-current' : ''}`} />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); /* Add download logic */ }}
+              className="p-3 rounded-full bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700 transition-all"
+              title="Download"
+            >
+              <Download className="w-5 h-5" />
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); /* Add save logic */ }}
+              className="p-3 rounded-full bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700 transition-all"
+              title="Save to collection"
+            >
+              <Bookmark className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-y-3 text-sm text-stone-500 mt-4 border-t border-stone-50 pt-4">
