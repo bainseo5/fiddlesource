@@ -1,42 +1,25 @@
 
 import React from 'react';
 import { Tune } from '../types';
-import { Play, MapPin, Music, Calendar, Info, Scissors, Layers, Upload, X } from 'lucide-react';
+import { Play, MapPin, Music, Calendar, Info, Scissors, Layers } from 'lucide-react';
 
 interface TuneCardProps {
   tune: Tune;
   onPlay: (tune: Tune) => void;
   onShowDetails: (tune: Tune) => void;
-  onDelete?: (tune: Tune) => void;
   isPlaying: boolean;
 }
 
-export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails, onDelete, isPlaying }) => {
+export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails, isPlaying }) => {
   return (
     <div className={`group relative bg-white border border-stone-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-amber-300 ${isPlaying ? 'ring-2 ring-amber-500 shadow-xl shadow-amber-100' : ''}`}>
-      <div className="absolute top-0 right-0 p-2 flex gap-1 z-10">
-        {tune.isImported && (
-          <div className="flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm border border-blue-200">
-            <Upload className="w-2.5 h-2.5" />
-            IMPORTED
-          </div>
-        )}
-        {tune.sourceCollection && (
+      {tune.sourceCollection && (
+        <div className="absolute top-0 right-0 p-2 flex gap-1 z-10">
           <div className="flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm border border-amber-200">
             <Layers className="w-2.5 h-2.5" />
             COLLECTION
           </div>
-        )}
-      </div>
-      
-      {tune.isImported && onDelete && (
-        <button 
-            onClick={(e) => { e.stopPropagation(); onDelete(tune); }}
-            className="absolute top-2 right-2 p-1.5 bg-white/80 hover:bg-red-500 hover:text-white text-stone-400 rounded-full transition-all shadow-sm opacity-0 group-hover:opacity-100 z-20"
-            title="Remove Import"
-        >
-            <X className="w-3.5 h-3.5" />
-        </button>
+        </div>
       )}
       
       <div className="p-5">
@@ -95,7 +78,7 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
           className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-stone-50 border border-stone-200 rounded-md text-[10px] font-bold text-stone-500 hover:bg-stone-100 hover:text-stone-800 tracking-widest transition-all"
         >
           <Info className="w-3 h-3" />
-          {tune.isImported ? 'ANALYSIS' : 'ARCHIVE DATA'}
+          ARCHIVE DATA
         </button>
       </div>
     </div>

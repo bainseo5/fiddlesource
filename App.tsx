@@ -8,7 +8,7 @@ import { Tune, SearchFilters } from './types';
 import { saveToDatabase, getFromDatabase, getAllSavedIds, removeFromDatabase } from './db';
 import { extractSegment } from './audioUtils';
 import * as api from './api';
-import { History, X, Star, Headphones, AlertTriangle, Download, Trash2, CheckCircle2, FileJson, Loader2, Upload, Cloud, FileAudio, Link } from 'lucide-react';
+import { History, X, Star, Headphones, AlertTriangle, Download, Trash2, CheckCircle2, FileJson, Loader2 } from 'lucide-react';
 
 const App: React.FC = () => {
   const [filters, setFilters] = useState<SearchFilters>({
@@ -27,12 +27,6 @@ const App: React.FC = () => {
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set<string>());
   const [isArchiving, setIsArchiving] = useState<string | null>(null);
   const [isProcessingDownload, setIsProcessingDownload] = useState<{ tuneId: string; type: 'download' | 'split' } | null>(null);
-  
-  // Import State
-  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
-  const [importedTunes, setImportedTunes] = useState<Tune[]>([]);
-  const [importTab, setImportTab] = useState<'file' | 'url'>('file');
-  const [importUrl, setImportUrl] = useState('');
 
   // Load tunes from API on mount
   useEffect(() => {
@@ -54,13 +48,9 @@ const App: React.FC = () => {
     initialize();
   }, []);
 
-  const combinedTunes = useMemo(() => {
-    return [...importedTunes, ...allTunes];
-  }, [importedTunes, allTunes]);
-
   const filteredTunes = useMemo(() => {
     // Simple client-side filtering for now
-    return combinedTunes.filter(tune => {
+    return allTunes.filter(tune => {
       const matchQuery = 
         tune.title.toLowerCase().includes(filters.query.toLowerCase()) ||
         tune.artist.toLowerCase().includes(filters.query.toLowerCase()) ||
@@ -69,7 +59,7 @@ const App: React.FC = () => {
       const matchKey = filters.key ? tune.key === filters.key : true;
       return matchQuery && matchRegion && matchKey;
     });
-  }, [filters, combinedTunes]);
+  }, [filters, allTunes]);
 
   const handleArchive = async (tune: Tune) => {
     try {
@@ -148,18 +138,8 @@ const App: React.FC = () => {
     });
   };
 
-  const handleRemoveImport = (tune: Tune) => {
-    setImportedTunes(prev => prev.filter(t => t.id !== tune.id));
-    if (currentTune?.id === tune.id) setCurrentTune(null);
-  };
-
   const handlePlay = async (tune: Tune) => {
     setAudioError(null);
-    // If imported, we likely already have the blob url as audioUrl, or we can use it directly
-    if (tune.isImported) {
-         setCurrentTune(tune);
-         return;
-    }
     
     const localBlob = await getFromDatabase(tune.id);
     if (localBlob) {
@@ -172,57 +152,6 @@ const App: React.FC = () => {
 
   const handleShowDetails = (tune: Tune) => {
     setDetailedTune(tune);
-  };
-
-  const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const newTune: Tune = {
-      id: `import-${Date.now()}`,
-      title: file.name.replace(/\.[^/.]+$/, ""), // remove extension
-      artist: 'Unknown Artist',
-      source: 'User Upload',
-      region: 'Imported',
-      key: '?',
-      tuning: 'Standard',
-      year: new Date().getFullYear().toString(),
-      audioUrl: URL.createObjectURL(file),
-      description: 'Audio imported from user device.',
-      genre: 'Imported',
-      isImported: true,
-      startTime: 0
-    };
-
-    setImportedTunes(prev => [newTune, ...prev]);
-    setIsImportModalOpen(false);
-  };
-
-  const handleUrlImport = () => {
-    if (!importUrl) return;
-    // Removed automatic CORS proxy as it was unreliable and for pre-cut files we assume direct access.
-    // User imported URLs might still face CORS issues if the server doesn't permit cross-origin requests.
-    const directUrl = importUrl; 
-    
-    const newTune: Tune = {
-      id: `import-url-${Date.now()}`,
-      title: 'Imported Stream',
-      artist: 'Unknown Artist',
-      source: importUrl,
-      region: 'Web',
-      key: '?',
-      tuning: '?',
-      year: '2024',
-      audioUrl: directUrl,
-      description: `Imported from: ${importUrl}`,
-      genre: 'Stream',
-      isImported: true,
-      startTime: 0
-    };
-
-    setImportedTunes(prev => [newTune, ...prev]);
-    setIsImportModalOpen(false);
-    setImportUrl('');
   };
 
   return (
@@ -256,95 +185,12 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* Import Modal */}
-      {isImportModalOpen && (
-        <div className="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-[80] flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in duration-200">
-             <div className="bg-stone-50 border-b border-stone-200 p-4 flex justify-between items-center">
-                <h3 className="font-bold text-stone-900 flex items-center gap-2">
-                    <Cloud className="w-5 h-5 text-amber-600" />
-                    Import Audio
-                </h3>
-                <button onClick={() => setIsImportModalOpen(false)} className="p-1 hover:bg-stone-200 rounded-full"><X className="w-5 h-5 text-stone-500" /></button>
-             </div>
-             
-             <div className="p-2 grid grid-cols-2 gap-2 border-b border-stone-100">
-                 <button 
-                    onClick={() => setImportTab('file')}
-                    className={`py-2 text-sm font-bold rounded-lg transition-colors ${importTab === 'file' ? 'bg-amber-100 text-amber-900' : 'text-stone-500 hover:bg-stone-100'}`}
-                 >
-                    Upload File
-                 </button>
-                 <button 
-                    onClick={() => setImportTab('url')}
-                    className={`py-2 text-sm font-bold rounded-lg transition-colors ${importTab === 'url' ? 'bg-amber-100 text-amber-900' : 'text-stone-500 hover:bg-stone-100'}`}
-                 >
-                    Direct URL
-                 </button>
-             </div>
-
-             <div className="p-6">
-                {importTab === 'file' ? (
-                    <div className="flex flex-col gap-4 text-center">
-                        <div className="border-2 border-dashed border-stone-300 rounded-xl p-8 flex flex-col items-center gap-3 hover:border-amber-400 hover:bg-amber-50 transition-colors relative cursor-pointer group">
-                             <input type="file" accept="audio/*" onChange={handleFileImport} className="absolute inset-0 opacity-0 cursor-pointer" />
-                             <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <FileAudio className="w-6 h-6 text-amber-600" />
-                             </div>
-                             <div className="text-sm">
-                                <span className="font-bold text-amber-700">Click to upload</span> or drag and drop
-                             </div>
-                             <p className="text-xs text-stone-400">MP3, WAV, OGG supported</p>
-                        </div>
-                        <p className="text-xs text-stone-500 bg-stone-100 p-3 rounded-lg border border-stone-200">
-                            <strong>Tip:</strong> If you want to use a SoundCloud track, use a downloader tool first, then upload the file here.
-                        </p>
-                    </div>
-                ) : (
-                    <div className="flex flex-col gap-4">
-                        <p className="text-sm text-stone-600">Enter a direct link to an audio file (mp3/wav) hosted on the web.</p>
-                        <input 
-                            type="text" 
-                            placeholder="https://example.com/audio.mp3" 
-                            className="w-full px-4 py-3 bg-stone-50 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none text-sm"
-                            value={importUrl}
-                            onChange={(e) => setImportUrl(e.target.value)}
-                        />
-                         <div className="bg-amber-50 border border-amber-200 p-3 rounded-lg flex gap-2 items-start">
-                             <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                             <p className="text-xs text-amber-800">
-                                <strong>Note:</strong> Standard SoundCloud, Spotify, or YouTube links (e.g. soundcloud.com/song) will <u>not</u> work directly. You must provide a direct link to the actual audio stream.
-                                 CORS policies may prevent direct streaming from some hosts.
-                             </p>
-                         </div>
-                         <button 
-                            onClick={handleUrlImport}
-                            className="w-full py-3 bg-stone-900 text-white rounded-xl font-bold hover:bg-stone-800 transition-colors"
-                         >
-                            Import Link
-                         </button>
-                    </div>
-                )}
-             </div>
-          </div>
-        </div>
-      )}
-
       <header className="bg-stone-900 text-stone-100 py-10 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/pinstripe.png')] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
           <div className="text-center md:text-left">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">FiddleSource</h1>
             <p className="text-stone-400 font-medium italic serif text-xl">Traditional Music Archive</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <button
-                onClick={() => setIsImportModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-3 bg-stone-800 hover:bg-stone-700 rounded-full text-sm font-bold tracking-wide transition-all border border-stone-700 text-stone-300"
-            >
-                <Upload className="w-4 h-4" />
-                IMPORT
-            </button>
           </div>
         </div>
       </header>
@@ -383,7 +229,6 @@ const App: React.FC = () => {
                   tune={tune} 
                   onPlay={handlePlay}
                   onShowDetails={handleShowDetails}
-                  onDelete={tune.isImported ? handleRemoveImport : undefined}
                   isPlaying={currentTune?.id === tune.id}
                 />
                 
@@ -396,11 +241,9 @@ const App: React.FC = () => {
                       <Trash2 className="w-4 h-4 hidden group-hover:block" />
                     </button>
                   ) : (
-                    !tune.isImported && (
-                        <button onClick={() => handleArchive(tune)} disabled={isArchiving === tune.id} className={`p-2 rounded-full shadow-lg text-white transition-all active:scale-90 ${isArchiving === tune.id ? 'bg-stone-400 animate-pulse' : 'bg-stone-800 hover:bg-amber-600'}`} title="Save to Database">
-                        <Download className="w-4 h-4" />
-                        </button>
-                    )
+                    <button onClick={() => handleArchive(tune)} disabled={isArchiving === tune.id} className={`p-2 rounded-full shadow-lg text-white transition-all active:scale-90 ${isArchiving === tune.id ? 'bg-stone-400 animate-pulse' : 'bg-stone-800 hover:bg-amber-600'}`} title="Save to Database">
+                      <Download className="w-4 h-4" />
+                    </button>
                   )}
                   
                   <button 
