@@ -74,7 +74,7 @@ Track which sessions from the [Clare Library Live Recordings](https://www.clarel
 | ⬜ | JH2 | Solo: Martin 'Junior' Crehan | Martin 'Junior' Crehan, fiddle & concertina | Unknown | Bonavella |
 | ⬜ | JH7 | Solo: Martin 'Junior' Crehan | Martin 'Junior' Crehan, fiddle & concertina | Unknown | Unknown |
 | ⬜ | JH16 | Solo: John Kelly | John Kelly, concertina | Unknown | Unknown |
-| ⬜ | JH24-1 | Solo: Paddy Canny | Paddy Canny, fiddle | 15 Aug 1972 | Kiltannon |
+| 🔄 | JH24-1 | Solo: Paddy Canny | Paddy Canny, fiddle | 15 Aug 1972 | Kiltannon |
 | ⬜ | JH24-2 | Solo: Paddy Fahy | Paddy Fahy, fiddle | 21 Aug 1972 | Aughrim |
 | ⬜ | JH24-3 | Solo: Martin 'Junior' Crehan | Martin 'Junior' Crehan, fiddle | 17 Aug 1972 | Bonavella |
 | ⬜ | JH30 | Solo: John Joe Healy | John Joe Healy, fiddle & concertina | Unknown | Spanish Point |
