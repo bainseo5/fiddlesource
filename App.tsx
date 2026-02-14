@@ -15,8 +15,13 @@ const App: React.FC = () => {
     query: '',
     region: '',
     key: '',
-    genre: ''
+    genre: '',
+    collection: '',
+    session: '',
+    instrument: ''
   });
+
+  const [viewMode, setViewMode] = useState<'grid' | 'sessions'>('grid');
 
   const [allTunes, setAllTunes] = useState<Tune[]>([]);
   const [isTunesLoading, setIsTunesLoading] = useState(true);
@@ -57,9 +62,25 @@ const App: React.FC = () => {
         tune.source.toLowerCase().includes(filters.query.toLowerCase());
       const matchRegion = filters.region ? tune.region === filters.region : true;
       const matchKey = filters.key ? tune.key === filters.key : true;
-      return matchQuery && matchRegion && matchKey;
+      const matchCollection = filters.collection ? tune.collection === filters.collection : true;
+      const matchSession = filters.session ? tune.sourceCollection === filters.session : true;
+      const matchInstrument = filters.instrument ? (tune.instruments?.toLowerCase().includes(filters.instrument.toLowerCase()) ?? false) : true;
+      return matchQuery && matchRegion && matchKey && matchCollection && matchSession && matchInstrument;
     });
   }, [filters, allTunes]);
+
+  // Group tunes by session
+  const tunesBySession = useMemo(() => {
+    const grouped = new Map<string, Tune[]>();
+    filteredTunes.forEach(tune => {
+      const session = tune.sourceCollection || 'Unknown Session';
+      if (!grouped.has(session)) {
+        grouped.set(session, []);
+      }
+      grouped.get(session)!.push(tune);
+    });
+    return grouped;
+  }, [filteredTunes]);
 
   const handleArchive = async (tune: Tune) => {
     try {
@@ -138,6 +159,26 @@ const App: React.FC = () => {
     });
   };
 
+  const handleFilterByArtist = (artist: string) => {
+    setFilters(prev => ({ ...prev, query: artist }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleFilterByTitle = (title: string) => {
+    setFilters(prev => ({ ...prev, query: title }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleFilterByCollection = (collection: string) => {
+    setFilters(prev => ({ ...prev, collection, session: '' }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleFilterBySession = (session: string) => {
+    setFilters(prev => ({ ...prev, session }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handlePlay = async (tune: Tune) => {
     setAudioError(null);
     
@@ -190,12 +231,20 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
           <div className="text-center md:text-left">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">FiddleSource</h1>
-            <p className="text-stone-400 font-medium italic serif text-xl">Traditional Music Archive</p>
+            <p className="text-stone-400 font-medium italic serif text-xl">Clare Library Traditional Music Archive</p>
           </div>
         </div>
       </header>
 
-      <SearchFiltersBar filters={filters} setFilters={setFilters} onClear={() => setFilters({ query: '', region: '', key: '', genre: '' })} />
+      <SearchFiltersBar 
+        filters={filters} 
+        setFilters={setFilters} 
+        onClear={() => setFilters({ query: '', region: '', key: '', genre: '', collection: '', session: '', instrument: '' })}
+        viewMode={viewMode}
+        setViewMode={setViewMode}
+        collections={Array.from(new Set(allTunes.map(t => t.collection).filter(Boolean))).sort()}
+        sessions={Array.from(new Set(allTunes.map(t => t.sourceCollection).filter(Boolean))).sort()}
+      />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         {isTunesLoading && (
@@ -212,7 +261,7 @@ const App: React.FC = () => {
           <div className="flex items-center justify-between mb-8 border-b border-stone-200 pb-4">
             <h2 className="text-2xl font-bold text-stone-800 flex items-center gap-3">
               <History className="w-6 h-6 text-amber-700" />
-              Source Recording Inventory
+              {viewMode === 'grid' ? 'BR Taylor Collection - Clare Library' : 'Recording Sessions'}
             </h2>
             <p className="text-xs text-stone-400 italic font-medium">Physical splitting enabled for historical study</p>
           </div>
@@ -220,6 +269,71 @@ const App: React.FC = () => {
           {filteredTunes.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-stone-500 text-lg">No tunes found matching your filters.</p>
+            </div>
+          ) : viewMode === 'sessions' ? (
+            /* Sessions View */
+            <div className="space-y-8">
+              {Array.from(tunesBySession.entries()).map(([session, tunes]) => {
+                // Determine parent collection
+                const parentCollection = session.includes("John Joe Healy") 
+                  ? "John Joe Healy Collection - Clare Library"
+                  : "BR Taylor Collection - Clare Library";
+                
+                return (
+                <div key={session} className="bg-white rounded-2xl shadow-md overflow-hidden border border-stone-200">
+                  <div className="bg-gradient-to-r from-amber-800 to-amber-950 px-6 py-6">
+                    <h3 className="text-2xl font-bold text-white mb-2">{session}</h3>
+                    <p className="text-amber-100 text-sm">
+                      {tunes.length} tune{tunes.length !== 1 ? 's' : ''} • {tunes[0]?.source || 'Unknown Source'}
+                    </p>
+                    {tunes[0]?.year && (
+                      <p className="text-amber-100 text-xs mt-1">Recorded: {tunes[0].year}</p>
+                    )}
+                    <p className="text-amber-200 text-xs mt-2 italic">Part of the {parentCollection}</p>
+                  </div>
+                  <div className="p-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                      {tunes.map(tune => (
+                        <div key={tune.id} className="relative">
+                          <TuneCard 
+                            tune={tune} 
+                            onPlay={handlePlay}
+                            onShowDetails={handleShowDetails}
+                            onFilterByTitle={handleFilterByTitle}
+                            onFilterByArtist={handleFilterByArtist}
+                            onFilterByCollection={handleFilterByCollection}
+                            onFilterBySession={handleFilterBySession}
+                            isPlaying={currentTune?.id === tune.id}
+                          />
+                          
+                          {/* Database & Split Controls */}
+                          <div className="absolute top-2 left-2 flex gap-1.5 z-20">
+                            {savedIds.has(tune.id) ? (
+                              <button onClick={() => handleDelete(tune.id)} className="p-2 bg-green-500 text-white rounded-full shadow-lg hover:bg-red-500 transition-all active:scale-90 group" title="Remove Offline Copy">
+                                <CheckCircle2 className="w-4 h-4 block group-hover:hidden" />
+                                <Trash2 className="w-4 h-4 hidden group-hover:block" />
+                              </button>
+                            ) : (
+                              <button onClick={() => handleArchive(tune)} disabled={isArchiving === tune.id} className={`p-2 rounded-full shadow-lg text-white transition-all active:scale-90 ${isArchiving === tune.id ? 'bg-stone-400 animate-pulse' : 'bg-stone-800 hover:bg-amber-600'}`} title="Save Offline">
+                                <Download className="w-4 h-4" />
+                              </button>
+                            )}
+                            
+                            <button 
+                              onClick={() => handleDownloadSegment(tune)} 
+                              className="p-2 bg-amber-600 text-white rounded-full shadow-lg hover:bg-amber-500 transition-all active:scale-90"
+                              title={ (tune.fileCutSource && tune.startTime === 0) ? "Download Tune (.mp3)" : "Export Physical Split (.wav)"}
+                            >
+                              <FileJson className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                );
+              })}
             </div>
           ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -229,6 +343,10 @@ const App: React.FC = () => {
                   tune={tune} 
                   onPlay={handlePlay}
                   onShowDetails={handleShowDetails}
+                  onFilterByTitle={handleFilterByTitle}
+                  onFilterByArtist={handleFilterByArtist}
+                  onFilterByCollection={handleFilterByCollection}
+                  onFilterBySession={handleFilterBySession}
                   isPlaying={currentTune?.id === tune.id}
                 />
                 

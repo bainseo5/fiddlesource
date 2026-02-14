@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Audio files - too large for git
+output/
+*.mp3
+*.wav
+
+# Backup data files
+backend/data/*.backup.json
+backend/data/tunes.before-*.json
+
+# Script output files
+scripts/*.json
+!scripts/package.json

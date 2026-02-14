@@ -77,9 +77,25 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
             <p className="text-stone-400 text-sm font-semibold uppercase">Source</p>
             <p className="text-stone-200 mt-1">{tune.source}</p>
             {tune.sourceCollection && (
-              <p className="text-stone-400 text-sm mt-1">{tune.sourceCollection}</p>
+              <>
+                <p className="text-amber-400 text-sm mt-2 font-semibold">Session</p>
+                <p className="text-stone-300 text-sm mt-1">{tune.sourceCollection}</p>
+                <p className="text-stone-500 text-xs mt-1">
+                  {tune.sourceCollection.includes("John Joe Healy") 
+                    ? "John Joe Healy Collection - Clare Library"
+                    : "BR Taylor Collection - Clare Library"}
+                </p>
+              </>
             )}
           </div>
+
+          {/* Instruments */}
+          {tune.instruments && (
+            <div className="bg-stone-800 rounded p-4">
+              <p className="text-stone-400 text-xs font-semibold uppercase mb-2">Musicians & Instruments</p>
+              <p className="text-stone-300 text-sm leading-relaxed">{tune.instruments}</p>
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="flex gap-3 pt-4">

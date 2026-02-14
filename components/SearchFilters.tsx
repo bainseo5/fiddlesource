@@ -1,17 +1,22 @@
 
 import React from 'react';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, Filter, X, Grid3x3, Library, Music2 } from 'lucide-react';
 import { SearchFilters } from '../types';
 
 interface SearchFilterProps {
   filters: SearchFilters;
   setFilters: React.Dispatch<React.SetStateAction<SearchFilters>>;
   onClear: () => void;
+  viewMode: 'grid' | 'sessions';
+  setViewMode: (mode: 'grid' | 'sessions') => void;
+  collections: string[];
+  sessions: string[];
 }
 
-export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear }) => {
-  const regions = ['Kentucky', 'Texas', 'North Carolina', 'Georgia', 'West Virginia', 'Tennessee'];
-  const keys = ['A', 'D', 'G', 'C', 'F'];
+export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear, viewMode, setViewMode, collections, sessions }) => {
+  const regions = ['Doolin', 'Mullagh'];
+  const keys = ['G', 'D', 'A', 'Em', 'A Dorian', 'D Mixolydian', 'A Mixolydian', 'E Dorian', 'G Mixolydian'];
+  const instruments = ['Tin whistle', 'Fiddle', 'Accordion', 'Flute', 'Uilleann pipes', 'Piano'];
 
   return (
     <div className="bg-white border-b border-stone-200 sticky top-0 z-30 py-4 shadow-sm">
@@ -32,6 +37,56 @@ export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilt
 
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3">
+            {/* View Mode Toggle */}
+            <div className="flex items-center bg-stone-50 border border-stone-200 rounded-lg">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`flex items-center gap-1 px-3 py-2 text-sm transition-colors ${
+                  viewMode === 'grid' 
+                    ? 'bg-amber-500 text-white rounded-lg' 
+                    : 'text-stone-600 hover:text-stone-800'
+                }`}
+              >
+                <Grid3x3 className="w-4 h-4" />
+                Grid
+              </button>
+              <button
+                onClick={() => setViewMode('sessions')}
+                className={`flex items-center gap-1 px-3 py-2 text-sm transition-colors ${
+                  viewMode === 'sessions' 
+                    ? 'bg-amber-500 text-white rounded-lg' 
+                    : 'text-stone-600 hover:text-stone-800'
+                }`}
+              >
+                <Library className="w-4 h-4" />
+                Sessions
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
+              <Library className="w-4 h-4" />
+              <select 
+                className="bg-transparent focus:outline-none max-w-xs"
+                value={filters.collection}
+                onChange={(e) => setFilters(prev => ({ ...prev, collection: e.target.value }))}
+              >
+                <option value="">All Collections</option>
+                {collections.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </div>
+
+            <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
+              <Library className="w-4 h-4" />
+              <select 
+                className="bg-transparent focus:outline-none max-w-xs"
+                value={filters.session}
+                onChange={(e) => setFilters(prev => ({ ...prev, session: e.target.value }))}
+              >
+                <option value="">All Sessions</option>
+                {sessions.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+
             <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
               <Filter className="w-4 h-4" />
               <select 
@@ -56,7 +111,19 @@ export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilt
               </select>
             </div>
 
-            {(filters.query || filters.region || filters.key) && (
+            <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
+              <Music2 className="w-4 h-4" />
+              <select 
+                className="bg-transparent focus:outline-none"
+                value={filters.instrument}
+                onChange={(e) => setFilters(prev => ({ ...prev, instrument: e.target.value }))}
+              >
+                <option value="">All Instruments</option>
+                {instruments.map(i => <option key={i} value={i}>{i}</option>)}
+              </select>
+            </div>
+
+            {(filters.query || filters.region || filters.key || filters.collection || filters.session || filters.instrument) && (
               <button 
                 onClick={onClear}
                 className="flex items-center gap-1 text-sm font-medium text-amber-600 hover:text-amber-700 p-2"
