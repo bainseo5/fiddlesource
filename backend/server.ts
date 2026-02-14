@@ -1,8 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { v4 as uuidv4 } from 'crypto';
 import { initializeDatabase, db } from './db.js';
 import { Tune, Playlist, PlaybackHistoryEntry, User } from './types.js';
+
+// ES Module __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Initialize database
 initializeDatabase();
@@ -13,6 +19,12 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve audio files from the output directory
+app.use('/audio', express.static(path.join(__dirname, '..', 'output')));
+
+// Serve static frontend build files (for production)
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 // ============ TUNES ENDPOINTS ============
 
@@ -296,6 +308,11 @@ app.get('/api/users/:userId/top-played', (req, res) => {
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK' });
+});
+
+// SPA fallback - serve index.html for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 // Start server
