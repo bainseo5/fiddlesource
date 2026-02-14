@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Tune, SearchFilters } from '../types';
-import { Play, MapPin, Music, Calendar, Info, Scissors, Layers, Library, User, Download, Bookmark } from 'lucide-react';
+import { Play, MapPin, Music, Calendar, Info, Scissors, Layers, Library, User, Download } from 'lucide-react';
 
 interface TuneCardProps {
   tune: Tune;
@@ -15,6 +15,31 @@ interface TuneCardProps {
 }
 
 export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails, onFilterByTitle, onFilterByArtist, onFilterByCollection, onFilterBySession, isPlaying }) => {
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      const response = await fetch(tune.audioUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${tune.title} - ${tune.artist}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Download failed:', error);
+    }
+  };
+
+  const handleSave = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // TODO: Implement save to collection functionality
+    // For now, show the details modal
+    onShowDetails(tune);
+  };
+
   return (
     <div className={`group relative bg-white border border-stone-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-amber-300 ${isPlaying ? 'ring-2 ring-amber-500 shadow-xl shadow-amber-100' : ''}`}>
       {tune.sourceCollection && (
@@ -62,18 +87,18 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
               <Play className={`w-5 h-5 ${isPlaying ? 'fill-current' : ''}`} />
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); /* Add download logic */ }}
+              onClick={handleDownload}
               className="p-3 rounded-full bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700 transition-all"
-              title="Download"
+              title="Download MP3"
             >
               <Download className="w-5 h-5" />
             </button>
             <button
-              onClick={(e) => { e.stopPropagation(); /* Add save logic */ }}
+              onClick={handleSave}
               className="p-3 rounded-full bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700 transition-all"
-              title="Save to collection"
+              title="View archive data"
             >
-              <Bookmark className="w-5 h-5" />
+              <Info className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -130,16 +155,6 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
             <p className="text-xs text-stone-600 leading-relaxed">{tune.instruments}</p>
           </div>
         )}
-      </div>
-      
-      <div className="px-5 pb-5 flex gap-2">
-        <button 
-          onClick={() => onShowDetails(tune)}
-          className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-stone-50 border border-stone-200 rounded-md text-[10px] font-bold text-stone-500 hover:bg-stone-100 hover:text-stone-800 tracking-widest transition-all"
-        >
-          <Info className="w-3 h-3" />
-          ARCHIVE DATA
-        </button>
       </div>
     </div>
   );
