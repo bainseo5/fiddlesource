@@ -67,22 +67,8 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
             <span>{tune.year}</span>
           </div>
           <div className="flex items-center gap-2">
-            {tune.fileCutSource && tune.startTime === 0 ? (
-               <div className="flex items-center gap-2">
-                <Music className="w-4 h-4 text-stone-400" />
-                <span className="truncate">{tune.genre}</span>
-              </div>
-            ) : tune.startTime !== undefined && tune.startTime > 0 ? (
-              <div className="flex items-center gap-1.5 text-amber-600 font-mono text-xs font-bold">
-                <Scissors className="w-3 h-3" />
-                {Math.floor(tune.startTime / 60)}:{(tune.startTime % 60).toString().padStart(2, '0')}
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 flex items-center justify-center text-[10px] font-bold border border-stone-300 rounded text-stone-400">T</div>
-                <span className="truncate">{tune.tuning}</span>
-              </div>
-            )}
+            <Music className="w-4 h-4 text-stone-400" />
+            <span className="truncate">{tune.genre}</span>
           </div>
         </div>
 
