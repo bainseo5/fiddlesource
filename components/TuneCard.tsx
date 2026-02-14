@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Tune, SearchFilters } from '../types';
-import { Play, MapPin, Music, Calendar, Info, Scissors, Layers, Library, User, Download } from 'lucide-react';
+import { Play, MapPin, Music, Calendar, Info, Layers, Library, User, Download, HardDrive } from 'lucide-react';
 
 interface TuneCardProps {
   tune: Tune;
@@ -38,6 +38,25 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
     // TODO: Implement save to collection functionality
     // For now, show the details modal
     onShowDetails(tune);
+  };
+
+  const handleSaveOffline = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      // Same download functionality but for offline storage
+      const response = await fetch(tune.audioUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${tune.title} - ${tune.artist}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Save offline failed:', error);
+    }
   };
 
   return (
@@ -99,6 +118,13 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
               title="View archive data"
             >
               <Info className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleSaveOffline}
+              className="p-3 rounded-full bg-stone-100 text-stone-600 hover:bg-amber-100 hover:text-amber-700 transition-all"
+              title="Save offline"
+            >
+              <HardDrive className="w-5 h-5" />
             </button>
           </div>
         </div>
