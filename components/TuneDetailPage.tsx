@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Tune } from '../types';
+import { AudioPlayer } from './AudioPlayer';
 import { X, ArrowLeft, Heart, Share2, Info } from 'lucide-react';
-import joecooleyInfo from '../data/joecooley-info.json'; 
+import joecooleyInfo from '../data/joecooley-info.json';  
 
 interface TuneDetailPageProps {
   tune: Tune;
