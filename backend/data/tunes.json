@@ -1615,7 +1615,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115287/tunes/joecooley-cooley-joecooleytape-1-4-04.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: plus fragment of Dawn",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: plus fragment of Dawn Original listing: \"McLeod’s (plus fragment of Dawn)\"",
     "genre": "Irish Traditional",
     "type": "Barndance",
     "startTime": 0,
@@ -1725,7 +1725,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115297/tunes/joecooley-cooley-joecooleytape-1-4-09.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: plus fragment of Peter Street",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: plus fragment of Peter Street Original listing: \"The Reconcilliation (plus fragment of Peter Street)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -1945,7 +1945,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115454/tunes/joecooley-cooley-joecooleytape-1-4-19.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: plus fragment of Boys of Ballisodare",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: plus fragment of Boys of Ballisodare Original listing: \"Showman’s Fancy (plus fragment of Boys of Ballisodare)\"",
     "genre": "Irish Traditional",
     "type": "Hornpipe",
     "startTime": 0,
@@ -1967,7 +1967,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115456/tunes/joecooley-cooley-joecooleytape-1-4-20.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: Joe Sings",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: Joe Sings Original listing: \"Swinging Down the Lane (Joe Sings)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -1989,7 +1989,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115459/tunes/joecooley-cooley-joecooleytape-1-4-21.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: waltzes",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: waltzes Original listing: \"(waltzes)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -2011,7 +2011,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115461/tunes/joecooley-cooley-joecooleytape-1-4-22.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: ?-waltz",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: ?-waltz Original listing: \"Claddagh Ring (?-waltz)\"",
     "genre": "Irish Traditional",
     "type": "Waltz",
     "startTime": 0,
@@ -2165,7 +2165,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115477/tunes/joecooley-cooley-joecooleytape-1-4-29.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: setdance",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 1-4). Note: setdance Original listing: \"(setdance) / Last Night’s Fun\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -2503,9 +2503,9 @@
     "sourceCollection": "The Joe Cooley Tapes - Tape 5",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "solo",
+    "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/joecooleytape_5/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), ? (Dermot)"
   },
   "joecooley-cooley-joecooleytape-5-18": {
     "id": "joecooley-cooley-joecooleytape-5-18",
@@ -2547,9 +2547,9 @@
     "sourceCollection": "The Joe Cooley Tapes - Tape 5",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "solo",
+    "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/joecooleytape_5/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-joecooleytape-5-20": {
     "id": "joecooley-cooley-joecooleytape-5-20",
@@ -2561,7 +2561,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115519/tunes/joecooley-cooley-joecooleytape-5-20.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 5). Note: waltz",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 5). Note: waltz Original listing: \"(waltz)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -2613,9 +2613,9 @@
     "sourceCollection": "The Joe Cooley Tapes - Tape 5",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "solo",
+    "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/joecooleytape_5/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan)"
   },
   "joecooley-cooley-joecooleytape-5-23": {
     "id": "joecooley-cooley-joecooleytape-5-23",
@@ -2803,7 +2803,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115543/tunes/joecooley-cooley-joecooleytape-6-03.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: reel fragment",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: reel fragment Original listing: \"(reel fragment)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -2825,7 +2825,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115545/tunes/joecooley-cooley-joecooleytape-6-04.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: reel fragment",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: reel fragment Original listing: \"(reel fragment)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -2913,7 +2913,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115553/tunes/joecooley-cooley-joecooleytape-6-08.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: Jig in D",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: Jig in D Original listing: \"(Jig in D)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -2935,7 +2935,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115555/tunes/joecooley-cooley-joecooleytape-6-09.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: Waltz",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: Waltz Original listing: \"(Waltz) / Three O-Clock in the Morning\"",
     "genre": "Irish Traditional",
     "type": "Jig",
     "startTime": 0,
@@ -2979,7 +2979,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115560/tunes/joecooley-cooley-joecooleytape-6-11.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: jig",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: jig Original listing: \"(jig) / Rambling Pitchfork\"",
     "genre": "Irish Traditional",
     "type": "Jig",
     "startTime": 0,
@@ -3045,7 +3045,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115567/tunes/joecooley-cooley-joecooleytape-6-14.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: reel in G",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 6). Note: reel in G Original listing: \"(reel in G) / Bird in the Bush\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -3097,9 +3097,9 @@
     "sourceCollection": "The Joe Cooley Tapes - Tape 6",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "solo",
+    "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/joecooleytape_6/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), ? (Dermot)"
   },
   "joecooley-cooley-joecooleytape-6-17": {
     "id": "joecooley-cooley-joecooleytape-6-17",
@@ -3221,7 +3221,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115584/tunes/joecooley-cooley-joecooleytape-7-06.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 7). Note: set dance on fiddle",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 7). Note: set dance on fiddle Original listing: \"(set dance on fiddle)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3287,7 +3287,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115590/tunes/joecooley-cooley-joecooleytape-7-09.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 7). Note: reel",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 7). Note: reel Original listing: \"(reel)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3405,9 +3405,9 @@
     "sourceCollection": "The Joe Cooley Tapes - Tape 7",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "solo",
+    "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/joecooleytape_7/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), ? (Dermot)"
   },
   "joecooley-cooley-joecooleytape-7-15": {
     "id": "joecooley-cooley-joecooleytape-7-15",
@@ -3441,7 +3441,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115606/tunes/joecooley-cooley-joecooleytape-7-16.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 7). Note: reel",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 7). Note: reel Original listing: \"(reel)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3463,7 +3463,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115608/tunes/joecooley-cooley-joecooleytape-8-10-03.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: reel",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: reel Original listing: \"(reel)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3507,7 +3507,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115612/tunes/joecooley-cooley-joecooleytape-8-10-05.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: the Castle",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: the Castle Original listing: \"Sean Ryan’s (the Castle)\"",
     "genre": "Irish Traditional",
     "type": "Hornpipe",
     "startTime": 0,
@@ -3551,7 +3551,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115616/tunes/joecooley-cooley-joecooleytape-8-10-07.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: reel fragment",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: reel fragment Original listing: \"(reel fragment) / Crowley’s\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -3573,7 +3573,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115618/tunes/joecooley-cooley-joecooleytape-8-10-08.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: other Crowley reel in Em",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: other Crowley reel in Em Original listing: \"(other Crowley reel in Em)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3617,7 +3617,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115622/tunes/joecooley-cooley-joecooleytape-8-10-10.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: strathspay",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: strathspay Original listing: \"(strathspay)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3639,7 +3639,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115625/tunes/joecooley-cooley-joecooleytape-8-10-11.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: scottish marches",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: scottish marches Original listing: \"(scottish marches)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3749,7 +3749,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115637/tunes/joecooley-cooley-joecooleytape-8-10-16.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: slip jig in D or Eb",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: slip jig in D or Eb Original listing: \"(slip jig in D or Eb)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -3947,7 +3947,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115656/tunes/joecooley-cooley-joecooleytape-8-10-25.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: hornpipe",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: hornpipe Original listing: \"(hornpipe)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4035,7 +4035,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115665/tunes/joecooley-cooley-joecooleytape-8-10-29.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: reel in D",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: reel in D Original listing: \"(reel in D)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4079,7 +4079,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115669/tunes/joecooley-cooley-joecooleytape-8-10-31.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: fragment",
+    "description": "Original recording from The Joe Cooley Tapes (Tapes 8-10). Note: fragment Original listing: \"Wheels of the World / (fragment)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -4189,7 +4189,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115681/tunes/joecooley-cooley-joecooleytape-11-03.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddling & talking",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddling & talking Original listing: \"(fiddling & talking)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4211,7 +4211,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115683/tunes/joecooley-cooley-joecooleytape-11-04.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddling",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddling Original listing: \"(fiddling) (hornpipe--Showman’s Fancy?)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4255,7 +4255,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115686/tunes/joecooley-cooley-joecooleytape-11-06.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: Down The Strand?",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: Down The Strand? Original listing: \"Andy McGann’s (Down The Strand?)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -4277,7 +4277,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115688/tunes/joecooley-cooley-joecooleytape-11-07.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: Cooley on fiddle!",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: Cooley on fiddle! Original listing: \"(Cooley on fiddle!)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4299,7 +4299,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115690/tunes/joecooley-cooley-joecooleytape-11-08.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: Cooley on fiddle again",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: Cooley on fiddle again Original listing: \"(Cooley on fiddle again)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4343,7 +4343,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115693/tunes/joecooley-cooley-joecooleytape-11-10.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D Original listing: \"(reel in D)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4409,7 +4409,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115700/tunes/joecooley-cooley-joecooleytape-11-13.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddle -- Sullivan",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddle -- Sullivan Original listing: \"(fiddle -- Sullivan)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4475,7 +4475,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115706/tunes/joecooley-cooley-joecooleytape-11-16.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddle in Em",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fiddle in Em Original listing: \"(fiddle in Em)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4519,7 +4519,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115710/tunes/joecooley-cooley-joecooleytape-11-18.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: flute",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: flute Original listing: \"(flute)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4585,7 +4585,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115717/tunes/joecooley-cooley-joecooleytape-11-21.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: jig in Em",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: jig in Em Original listing: \"(jig in Em)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4629,7 +4629,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115720/tunes/joecooley-cooley-joecooleytape-11-23.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D -- Boys of the Lough?",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D -- Boys of the Lough? Original listing: \"(reel in D -- Boys of the Lough?)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4673,7 +4673,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115724/tunes/joecooley-cooley-joecooleytape-11-25.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D Original listing: \"(reel in D)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4805,7 +4805,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115739/tunes/joecooley-cooley-joecooleytape-11-31.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fragment",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fragment Original listing: \"Gold Ring / (fragment)\"",
     "genre": "Irish Traditional",
     "type": "Jig",
     "startTime": 0,
@@ -4827,7 +4827,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115741/tunes/joecooley-cooley-joecooleytape-11-32.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel Original listing: \"Miss Monaghan’s / (reel)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -4849,7 +4849,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115743/tunes/joecooley-cooley-joecooleytape-11-33.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D Original listing: \"(reel in D)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4893,7 +4893,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115748/tunes/joecooley-cooley-joecooleytape-11-35.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fragments",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: fragments Original listing: \"(fragments)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4915,7 +4915,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115750/tunes/joecooley-cooley-joecooleytape-11-36.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: jig",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: jig Original listing: \"(jig)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -4959,7 +4959,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115755/tunes/joecooley-cooley-joecooleytape-11-38.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: jigs",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: jigs Original listing: \"(jigs) (Ship in Full Sail?)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5025,7 +5025,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115762/tunes/joecooley-cooley-joecooleytape-11-41.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 11). Note: reel in D Original listing: \"(reel in D)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5069,7 +5069,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115768/tunes/joecooley-cooley-joecooleytape-12-04.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: set dance",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: set dance Original listing: \"The Blackbird (set dance)\"",
     "genre": "Irish Traditional",
     "type": "Hornpipe",
     "startTime": 0,
@@ -5179,7 +5179,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115779/tunes/joecooley-cooley-joecooleytape-12-09.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: old",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: old Original listing: \"Toss The Feathers (old)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -5201,7 +5201,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115781/tunes/joecooley-cooley-joecooleytape-12-10.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: very old version",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: very old version Original listing: \"Toss The Feathers (very old version)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -5223,7 +5223,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115783/tunes/joecooley-cooley-joecooleytape-12-11.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: in A",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: in A Original listing: \"Music in the Glen (in A)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -5245,7 +5245,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115786/tunes/joecooley-cooley-joecooleytape-12-12.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: in G",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: in G Original listing: \"Music in the Glen (in G)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -5377,7 +5377,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115798/tunes/joecooley-cooley-joecooleytape-12-18.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: the reel that came before Skylark",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: the reel that came before Skylark Original listing: \"(the reel that came before Skylark)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5443,7 +5443,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115803/tunes/joecooley-cooley-joecooleytape-12-21.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: another jig",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: another jig Original listing: \"(another jig)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5465,7 +5465,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115805/tunes/joecooley-cooley-joecooleytape-12-22.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: mouth music",
+    "description": "Original recording from The Joe Cooley Tapes (Tape 12). Note: mouth music Original listing: \"The Colliers (mouth music)\"",
     "genre": "Irish Traditional",
     "type": "Jig",
     "startTime": 0,
@@ -5487,7 +5487,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115807/tunes/joecooley-cooley-joecooleyandmiliosalundy-03.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: jig",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: jig Original listing: \"(jig) / Cook In The Kitchen\"",
     "genre": "Irish Traditional",
     "type": "Jig",
     "startTime": 0,
@@ -5495,9 +5495,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-04": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-04",
@@ -5517,9 +5517,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-05": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-05",
@@ -5531,7 +5531,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115811/tunes/joecooley-cooley-joecooleyandmiliosalundy-05.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: jig",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: jig Original listing: \"(jig)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5539,9 +5539,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-06": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-06",
@@ -5561,9 +5561,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-07": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-07",
@@ -5575,7 +5575,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115815/tunes/joecooley-cooley-joecooleyandmiliosalundy-07.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: talking",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: talking Original listing: \"(talking)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5583,9 +5583,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-08": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-08",
@@ -5605,9 +5605,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-09": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-09",
@@ -5627,9 +5627,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-10": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-10",
@@ -5649,9 +5649,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-11": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-11",
@@ -5663,7 +5663,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115822/tunes/joecooley-cooley-joecooleyandmiliosalundy-11.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: talking fragment",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: talking fragment Original listing: \"(talking fragment)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5671,9 +5671,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-12": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-12",
@@ -5693,9 +5693,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-13": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-13",
@@ -5715,9 +5715,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-14": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-14",
@@ -5729,7 +5729,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115829/tunes/joecooley-cooley-joecooleyandmiliosalundy-14.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: Joe talking at McQueeny home",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: Joe talking at McQueeny home Original listing: \"(Joe talking at McQueeny home)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5737,9 +5737,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-15": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-15",
@@ -5759,9 +5759,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-16": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-16",
@@ -5773,7 +5773,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115834/tunes/joecooley-cooley-joecooleyandmiliosalundy-16.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: march",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: march Original listing: \"(march) / Roddy McCorley / (march)\"",
     "genre": "Irish Traditional",
     "type": "March",
     "startTime": 0,
@@ -5781,9 +5781,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-17": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-17",
@@ -5795,7 +5795,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115837/tunes/joecooley-cooley-joecooleyandmiliosalundy-17.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: some instrumental songs",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: some instrumental songs Original listing: \"(some instrumental songs)\"",
     "genre": "Irish Traditional",
     "type": "Tune",
     "startTime": 0,
@@ -5803,9 +5803,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-joecooleyandmiliosalundy-18": {
     "id": "joecooley-cooley-joecooleyandmiliosalundy-18",
@@ -5817,7 +5817,7 @@
     "tuning": "Standard",
     "year": "1970-1973",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115839/tunes/joecooley-cooley-joecooleyandmiliosalundy-18.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: or Siege of Limerick?",
+    "description": "Original recording from The Joe Cooley Tapes (With Miliosa Lundy). Note: or Siege of Limerick? Original listing: \"The Banks of Inverness (or Siege of Limerick?)\"",
     "genre": "Irish Traditional",
     "type": "Reel",
     "startTime": 0,
@@ -5825,9 +5825,9 @@
     "sourceCollection": "The Joe Cooley Tapes - With Miliosa Lundy",
     "isImported": true,
     "collection": "The Joe Cooley Tapes",
-    "recordingType": "session",
+    "recordingType": "duet",
     "originalUrl": "https://joecooleytapes.org/joecooleyandmiliosalundy/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Piano (Miliosa Lundy)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-03": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-03",
@@ -5849,7 +5849,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-04": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-04",
@@ -5871,7 +5871,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-05": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-05",
@@ -5893,7 +5893,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-06": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-06",
@@ -5915,7 +5915,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-07": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-07",
@@ -5937,7 +5937,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-08": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-08",
@@ -5959,7 +5959,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-09": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-09",
@@ -5981,7 +5981,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-10": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-10",
@@ -6003,7 +6003,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-11": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-11",
@@ -6025,7 +6025,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-12": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-12",
@@ -6047,7 +6047,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-13": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-13",
@@ -6069,7 +6069,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley), Flute (John Brown)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-14": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-14",
@@ -6091,7 +6091,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-15": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-15",
@@ -6113,7 +6113,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-16": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-16",
@@ -6135,7 +6135,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-17": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-17",
@@ -6157,7 +6157,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-18": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-18",
@@ -6179,7 +6179,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-19": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-19",
@@ -6201,7 +6201,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-20": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-20",
@@ -6223,7 +6223,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-21": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-21",
@@ -6245,7 +6245,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-22": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-22",
@@ -6267,7 +6267,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-23": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-23",
@@ -6289,7 +6289,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-24": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-24",
@@ -6311,7 +6311,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-25": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-25",
@@ -6333,7 +6333,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-26": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-26",
@@ -6355,7 +6355,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-27": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-27",
@@ -6377,7 +6377,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-28": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-28",
@@ -6399,7 +6399,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-29": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-29",
@@ -6421,7 +6421,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-30": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-30",
@@ -6443,7 +6443,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-31": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-31",
@@ -6465,7 +6465,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-32": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-32",
@@ -6487,7 +6487,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-33": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-33",
@@ -6509,7 +6509,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-1-34": {
     "id": "joecooley-cooley-cooleykeeganchicago-1-34",
@@ -6531,7 +6531,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_1/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-03": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-03",
@@ -6553,7 +6553,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-04": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-04",
@@ -6575,7 +6575,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-05": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-05",
@@ -6597,7 +6597,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-06": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-06",
@@ -6619,7 +6619,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-07": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-07",
@@ -6641,7 +6641,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-08": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-08",
@@ -6663,7 +6663,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-09": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-09",
@@ -6685,7 +6685,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-10": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-10",
@@ -6707,7 +6707,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-11": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-11",
@@ -6729,7 +6729,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-12": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-12",
@@ -6751,7 +6751,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-13": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-13",
@@ -6773,7 +6773,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-14": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-14",
@@ -6795,7 +6795,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-15": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-15",
@@ -6817,7 +6817,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-16": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-16",
@@ -6839,7 +6839,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-17": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-17",
@@ -6861,7 +6861,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-18": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-18",
@@ -6883,7 +6883,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-19": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-19",
@@ -6905,7 +6905,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-20": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-20",
@@ -6927,7 +6927,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-21": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-21",
@@ -6949,7 +6949,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-22": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-22",
@@ -6971,7 +6971,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-23": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-23",
@@ -6983,7 +6983,7 @@
     "tuning": "Standard",
     "year": "1960s",
     "audioUrl": "https://res.cloudinary.com/ddtyxauci/video/upload/v1771115948/tunes/joecooley-cooley-cooleykeeganchicago-2-23.mp3",
-    "description": "Original recording from The Joe Cooley Tapes (Chicago Tape 2). Note: McMahon's",
+    "description": "Original recording from The Joe Cooley Tapes (Chicago Tape 2). Note: McMahon's Original listing: \"Sean Ryan's (McMahon's)\"",
     "genre": "Irish Traditional",
     "type": "Hornpipe",
     "startTime": 0,
@@ -6993,7 +6993,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-24": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-24",
@@ -7015,7 +7015,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-25": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-25",
@@ -7037,7 +7037,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-26": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-26",
@@ -7059,7 +7059,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-27": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-27",
@@ -7081,7 +7081,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-28": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-28",
@@ -7103,7 +7103,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-29": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-29",
@@ -7125,7 +7125,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-30": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-30",
@@ -7147,7 +7147,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-31": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-31",
@@ -7169,7 +7169,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-32": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-32",
@@ -7191,7 +7191,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-33": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-33",
@@ -7213,7 +7213,7 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   },
   "joecooley-cooley-cooleykeeganchicago-2-34": {
     "id": "joecooley-cooley-cooleykeeganchicago-2-34",
@@ -7235,6 +7235,6 @@
     "collection": "The Joe Cooley Tapes",
     "recordingType": "session",
     "originalUrl": "https://joecooleytapes.org/cooleykeeganchicago_2/",
-    "instruments": "Accordion (Joe Cooley)"
+    "instruments": "Accordion (Joe Cooley), Banjo (Kevin Keegan), Flute (Seamus Cooley)"
   }
 }
