@@ -54,8 +54,8 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
           {/* Tune Information Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-stone-800 rounded p-4">
-              <p className="text-stone-400 text-xs font-semibold uppercase">Genre</p>
-              <p className="text-stone-100 text-lg font-bold mt-1">{tune.genre}</p>
+              <p className="text-stone-400 text-xs font-semibold uppercase">Type</p>
+              <p className="text-stone-100 text-lg font-bold mt-1">{tune.type || tune.genre}</p>
             </div>
             <div className="bg-stone-800 rounded p-4">
               <p className="text-stone-400 text-xs font-semibold uppercase">Key</p>
@@ -83,16 +83,33 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
           <div className="border-l-4 border-amber-600 pl-4 py-2 bg-stone-800 rounded">
             <p className="text-stone-400 text-sm font-semibold uppercase">Source</p>
             <p className="text-stone-200 mt-1">{tune.source}</p>
-            {tune.sourceCollection && (
+            {tune.sourceCollection && tune.sourceCollection !== tune.source && (
               <>
-                <p className="text-amber-400 text-sm mt-2 font-semibold">Session</p>
+                <p className="text-amber-400 text-sm mt-2 font-semibold">
+                  {tune.recordingType === 'session' ? 'Session Source' : 'Collection Source'}
+                </p>
                 <p className="text-stone-300 text-sm mt-1">{tune.sourceCollection}</p>
                 <p className="text-stone-500 text-xs mt-1">
                   {tune.sourceCollection.includes("John Joe Healy") 
                     ? "John Joe Healy Collection - Clare Library"
+                    : tune.sourceCollection.includes("Joe Cooley")
+                    ? "The Joe Cooley Tapes"
                     : "BR Taylor Collection - Clare Library"}
                 </p>
               </>
+            )}
+            {tune.originalUrl && (
+              <div className="mt-3">
+                 <a 
+                   href={tune.originalUrl} 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   className="inline-flex items-center text-amber-500 hover:text-amber-400 text-sm hover:underline"
+                 >
+                   View original source
+                   <Share2 className="w-3 h-3 ml-1" />
+                 </a>
+              </div>
             )}
           </div>
 

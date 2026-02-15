@@ -19,6 +19,8 @@ export interface Tune {
   isImported?: boolean;
   fileCutSource?: boolean; // Indicates if this tune's audioUrl points to a physically cut segment
   recordingType?: 'session' | 'solo' | 'duet' | 'recital' | 'demo' | 'ensemble';
+  type?: string; // e.g. "Reel", "Jig", "Hornpipe"
+  originalUrl?: string; // Link to the original source webpage
 }
 
 export interface SearchFilters {

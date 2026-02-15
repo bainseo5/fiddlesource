@@ -121,14 +121,20 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
 
   return (
     <div className={`group relative bg-white border border-stone-200 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-amber-300 ${isPlaying ? 'ring-2 ring-amber-500 shadow-xl shadow-amber-100' : ''}`}>
-      {tune.sourceCollection && (
-        <div className="absolute top-0 right-0 p-2 flex gap-1 z-10">
+      <div className="absolute top-0 right-0 p-2 flex gap-1 z-10">
+        {tune.recordingType === 'session' && (
           <div className="flex items-center gap-1 px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm border border-amber-200">
             <Layers className="w-2.5 h-2.5" />
             SESSION
           </div>
-        </div>
-      )}
+        )}
+        {tune.type && (
+          <div className="flex items-center gap-1 px-2 py-0.5 bg-stone-100 text-stone-600 text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm border border-stone-200">
+            <Music className="w-2.5 h-2.5" />
+            {tune.type}
+          </div>
+        )}
+      </div>
       
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
