@@ -273,7 +273,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
           <div className="text-center md:text-left">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">FiddleSource</h1>
-            <p className="text-stone-400 font-medium italic serif text-xl">Clare Library Traditional Music Archive</p>
+            <p className="text-stone-400 font-medium italic serif text-xl">Traditional Music Archive</p>
           </div>
         </div>
       </header>
@@ -304,7 +304,7 @@ const App: React.FC = () => {
           <div className="flex items-center justify-between mb-8 border-b border-stone-200 pb-4">
             <h2 className="text-2xl font-bold text-stone-800 flex items-center gap-3">
               <History className="w-6 h-6 text-amber-700" />
-              {viewMode === 'sessions' ? 'Recording Sessions' : 'Clare Library Traditional Music Archive'}
+              {viewMode === 'sessions' ? 'Recording Sessions' : 'Traditional Music Archive'}
             </h2>
           </div>
           
