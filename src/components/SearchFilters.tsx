@@ -15,7 +15,7 @@ interface SearchFilterProps {
 }
 
 export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear, viewMode, setViewMode, collections, sessions, artists }) => {
-  const regions = ['Doolin', 'Mullagh', 'Tulla'];
+  const regions = ['Doolin', 'Mullagh', 'Tulla', 'Galway', 'Chicago'];
   const keys = ['G', 'D', 'A', 'Em', 'A Dorian', 'D Mixolydian', 'A Mixolydian', 'E Dorian', 'G Mixolydian'];
   const instruments = ['Tin whistle', 'Fiddle', 'Accordion', 'Flute', 'Uilleann pipes', 'Piano', 'Bodhrán'];
 
