@@ -39,9 +39,12 @@ const sessionInfo = {
   location: "Katty's Bar, Mullagh",
   musicians: "Pat Crehan (flute), Michael Downes (fiddle), Jim McKee (fiddle)",
   date: "July 11, 1976",
+  year: "1976",
   recordedBy: "Barry Taylor",
   collection: "BR Taylor Collection Tape 019-2",
-  region: "Mullagh"
+  region: "Mullagh",
+  recordingType: "session",
+  description: "Recorded at Katty's Bar, Mullagh on July 11, 1976.\nMusicians: Pat Crehan (flute), Michael Downes (fiddle), Jim McKee (fiddle).\nRecorded by Barry Taylor.\nPart of the BR Taylor Collection (Tape 019-2)."
 };
 
 // Track list with timestamps
@@ -367,12 +370,20 @@ async function main() {
       tunes.push({
         id: track.id,
         title: track.title,
-        genre: track.genre,
+        genre: 'Irish Traditional',
+        type: track.genre,
         url: `/audio/${track.id}.mp3`,
         source: sessionInfo.location,
         musicians: sessionInfo.musicians,
+        artist: sessionInfo.musicians,
         date: sessionInfo.date,
-        collection: sessionInfo.collection
+        year: sessionInfo.year,
+        collection: sessionInfo.collection,
+        sourceCollection: sessionInfo.collection, // Added for consistency
+        region: sessionInfo.region,
+        recordingType: sessionInfo.recordingType,
+        description: sessionInfo.description,
+        isImported: true // Mark as imported like previous sessions
       });
     } catch (err) {
       console.error(`Error processing ${track.title}:`, err.message);

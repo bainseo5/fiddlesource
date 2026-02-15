@@ -57,13 +57,17 @@ npm run dev
 -   `scripts/`: The heart of the processing pipeline (scrapers, splitters).
 -   `backend/`: Express server API.
     -   `backend/data/`: The `tunes.json` database.
--   `src/`: React frontend application.
+-   `components/`: Reusable React UI components.
 -   `archive/`: Storage for raw MP3 files (not committed to Git).
+-   `docs/`: Project documentation and guides.
 
 ## 📚 Documentation
 
--   **[Adding New Sessions](ADDING_NEW_SESSIONS.md)**: The core workflow for ingesting new music.
--   **[Backend Setup](BACKEND_SETUP.md)**: Server configuration details.
+-   **[Detailed Workflow Guide](docs/NEXT_SESSION_GUIDE.md)**: ⭐️ Start here for the next session.
+-   **[Collection Tracker](docs/COLLECTION_TRACKER.md)**: Status of all sessions.
+-   **[Adding New Sessions](docs/ADDING_NEW_SESSIONS.md)**: The general process overview.
+-   **[Backend Setup](docs/BACKEND_SETUP.md)**: Server configuration details.
+-   **[Deploy to Railway](docs/DEPLOY_TO_RAILWAY.md)**: How to publish the backend.
 
 ---
 

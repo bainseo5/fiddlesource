@@ -372,16 +372,27 @@ async function main() {
       console.log(`Processing: ${track.title} (${track.start} - ${track.end})`);
       await execPromise(cmd);
       
+      
+      // ENHANCED METADATA SCHEMA
       tunes.push({
         id: track.id,
         title: track.title,
-        genre: track.genre,
+        genre: 'Irish Traditional',
+        type: track.genre, // Maps 'Reel'/'Jig' to type
         url: `/audio/${track.id}.mp3`,
         source: sessionInfo.location,
         musicians: sessionInfo.musicians,
+        artist: sessionInfo.artist || sessionInfo.musicians,
         date: sessionInfo.date,
+        year: sessionInfo.date ? sessionInfo.date.slice(-4) : "Unknown", // Attempt to extract year
         collection: sessionInfo.collection,
-        recordingType: sessionInfo.recordingType
+        sourceCollection: sessionInfo.collection, 
+        region: sessionInfo.region || "County Clare", // Default if missing
+        recordingType: sessionInfo.recordingType || 'session',
+        description: `Recorded at ${sessionInfo.location} on ${sessionInfo.date}.
+Musicians: ${sessionInfo.musicians}.
+Part of ${sessionInfo.collection}.`,
+        isImported: true
       });
     } catch (err) {
       console.error(`Error processing ${track.title}:`, err.message);

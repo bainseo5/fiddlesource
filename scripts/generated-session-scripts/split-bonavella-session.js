@@ -37,10 +37,14 @@ function parseTime(timeStr) {
 const sessionInfo = {
   location: "Crehan's Home, Bonavella",
   musicians: "Willie Clancy (pipes), Seamus Ennis (pipes), Martin 'Junior' Crehan (fiddle), Angela Crehan (whistle/piano), Ita Crehan (whistle)",
+  artist: "Willie Clancy, Seamus Ennis, Martin 'Junior' Crehan & Family",
   date: "October 10, 1961",
+  year: "1961",
   recordedBy: "Martin Talty",
   collection: "John Joe Healy Collection Tape 12",
-  region: "Mullagh"
+  region: "Mullagh",
+  recordingType: "session",
+  description: "Recorded in Crehan's Home, Bonavella on October 10, 1961.\nMusicians: Willie Clancy (pipes), Seamus Ennis (pipes), Martin 'Junior' Crehan (fiddle), Angela Crehan (whistle/piano), Ita Crehan (whistle).\nRecorded by Martin Talty.\nPart of the John Joe Healy Collection (Tape 12)."
 };
 
 // Track list with timestamps
@@ -328,12 +332,20 @@ async function main() {
       tunes.push({
         id: track.id,
         title: track.title,
-        genre: track.genre,
+        genre: 'Irish Traditional',
+        type: track.genre,
         url: `/audio/${track.id}.mp3`,
         source: sessionInfo.location,
         musicians: sessionInfo.musicians,
+        artist: sessionInfo.artist || sessionInfo.musicians,
         date: sessionInfo.date,
-        collection: sessionInfo.collection
+        year: sessionInfo.year,
+        collection: sessionInfo.collection,
+        sourceCollection: sessionInfo.collection,
+        region: sessionInfo.region,
+        recordingType: sessionInfo.recordingType,
+        description: sessionInfo.description,
+        isImported: true
       });
     } catch (err) {
       console.error(`Error processing ${track.title}:`, err.message);
