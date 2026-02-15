@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo, useEffect } from 'react';
 import { SearchFiltersBar } from './components/SearchFilters';
 import { TuneCard } from './components/TuneCard';
@@ -54,6 +53,11 @@ const App: React.FC = () => {
     };
     initialize();
   }, []);
+
+  useEffect(() => {
+    // Expose allTunes globally for region filter
+    (window as any).__ALL_TUNES__ = allTunes;
+  }, [allTunes]);
 
   const getRecordingLabel = (tune: Tune) => {
     if (tune.recordingType) {

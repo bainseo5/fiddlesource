@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Tune, SearchFilters } from '../types';
 import { Play, MapPin, Music, Calendar, Info, Layers, Library, User, Download, HardDrive, Check } from 'lucide-react';
@@ -166,6 +165,18 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
                   {index < array.length - 1 && <span className="text-stone-400 mx-0.5">,</span>}
                 </React.Fragment>
               ))}
+              {tune.region && (
+                <>
+                  <span className="text-stone-400 mx-1">|</span>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); onFilterBySession && onFilterBySession(''); onFilterByCollection && onFilterByCollection(''); onFilterByArtist && onFilterByArtist(''); onFilterByTitle && onFilterByTitle(''); onFilterByRegion && onFilterByRegion(tune.region); }}
+                    className="text-left text-blue-700 font-medium text-sm hover:text-blue-900 hover:underline transition-colors"
+                    title={`Filter by region: ${tune.region}`}
+                  >
+                    {tune.region}
+                  </button>
+                </>
+              )}
             </div>
           </div>
           {/* Traffic light button stack */}

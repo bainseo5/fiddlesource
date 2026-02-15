@@ -1,5 +1,4 @@
-
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { Search, Filter, X, Grid3x3, Library, Music2, List, Star, User } from 'lucide-react';
 import { SearchFilters, ViewMode } from '../types';
 
@@ -15,7 +14,16 @@ interface SearchFilterProps {
 }
 
 export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear, viewMode, setViewMode, collections, sessions, artists }) => {
-  const regions = ['Doolin', 'Mullagh', 'Tulla', 'Galway', 'Chicago'];
+  const [regions, setRegions] = React.useState<string[]>([]);
+  React.useEffect(() => {
+    // Try to get all regions from window.__ALL_TUNES__ if available (injected by App)
+    if (window && (window as any).__ALL_TUNES__) {
+      const allTunes = (window as any).__ALL_TUNES__;
+      const uniqueRegions = Array.from(new Set(allTunes.map((t: any) => t.region).filter(Boolean)));
+      setRegions(uniqueRegions.sort());
+    }
+  }, []);
+
   const keys = ['G', 'D', 'A', 'Em', 'A Dorian', 'D Mixolydian', 'A Mixolydian', 'E Dorian', 'G Mixolydian'];
   const instruments = ['Tin whistle', 'Fiddle', 'Accordion', 'Flute', 'Uilleann pipes', 'Piano', 'Bodhrán'];
 
