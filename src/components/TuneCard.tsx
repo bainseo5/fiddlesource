@@ -207,8 +207,9 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
             {tune.region ? (
               <button
                 onClick={(e) => { e.stopPropagation(); onFilterByRegion && onFilterByRegion(tune.region); }}
-                className="truncate text-blue-700 font-medium hover:text-blue-900 hover:underline transition-colors"
+                className="truncate text-stone-600 font-medium hover:text-amber-600 hover:underline transition-colors"
                 title={`Filter by region: ${tune.region}`}
+                style={{ background: 'none', border: 'none', padding: 0, margin: 0 }}
               >
                 {tune.region}
               </button>
