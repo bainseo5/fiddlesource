@@ -16,13 +16,17 @@ interface SearchFilterProps {
 export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear, viewMode, setViewMode, collections, sessions, artists }) => {
   const [regions, setRegions] = React.useState<string[]>([]);
   React.useEffect(() => {
-    // Try to get all regions from window.__ALL_TUNES__ if available (injected by App)
+    let allTunes: any[] = [];
     if (window && (window as any).__ALL_TUNES__) {
-      const allTunes = (window as any).__ALL_TUNES__;
+      allTunes = (window as any).__ALL_TUNES__;
+    } else if ((window as any).allTunesFromProps) {
+      allTunes = (window as any).allTunesFromProps;
+    }
+    if (allTunes.length) {
       const uniqueRegions = Array.from(new Set(allTunes.map((t: any) => t.region).filter(Boolean)));
       setRegions(uniqueRegions.sort());
     }
-  }, []);
+  }, [window.__ALL_TUNES__]);
 
   const keys = ['G', 'D', 'A', 'Em', 'A Dorian', 'D Mixolydian', 'A Mixolydian', 'E Dorian', 'G Mixolydian'];
   const instruments = ['Tin whistle', 'Fiddle', 'Accordion', 'Flute', 'Uilleann pipes', 'Piano', 'Bodhrán'];
