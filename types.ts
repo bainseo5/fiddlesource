@@ -22,6 +22,7 @@ export interface Tune {
 
 export interface SearchFilters {
   query: string;
+  artist: string;
   region: string;
   key: string;
   genre: string;

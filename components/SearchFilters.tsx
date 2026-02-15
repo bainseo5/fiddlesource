@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Search, Filter, X, Grid3x3, Library, Music2, List, Star } from 'lucide-react';
+import React, { useMemo } from 'react';
+import { Search, Filter, X, Grid3x3, Library, Music2, List, Star, User } from 'lucide-react';
 import { SearchFilters, ViewMode } from '../types';
 
 interface SearchFilterProps {
@@ -11,12 +11,20 @@ interface SearchFilterProps {
   setViewMode: (mode: ViewMode) => void;
   collections: string[];
   sessions: string[];
+  artists: string[];
 }
 
-export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear, viewMode, setViewMode, collections, sessions }) => {
-  const regions = ['Doolin', 'Mullagh'];
+export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilters, onClear, viewMode, setViewMode, collections, sessions, artists }) => {
+  const regions = ['Doolin', 'Mullagh', 'Tulla'];
   const keys = ['G', 'D', 'A', 'Em', 'A Dorian', 'D Mixolydian', 'A Mixolydian', 'E Dorian', 'G Mixolydian'];
-  const instruments = ['Tin whistle', 'Fiddle', 'Accordion', 'Flute', 'Uilleann pipes', 'Piano'];
+  const instruments = ['Tin whistle', 'Fiddle', 'Accordion', 'Flute', 'Uilleann pipes', 'Piano', 'Bodhrán'];
+
+  // Flatten and normalize artist list for the dropdown
+  const uniqueArtists = useMemo(() => {
+    // We already receive a flattened list of artists from App.tsx, but let's double check unique and sort
+    const normalized = new Set(artists.map(a => a.trim()).filter(Boolean));
+    return Array.from(normalized).sort();
+  }, [artists]);
 
   return (
     <div className="bg-white border-b border-stone-200 sticky top-0 z-30 py-4 shadow-sm">
@@ -87,6 +95,19 @@ export const SearchFiltersBar: React.FC<SearchFilterProps> = ({ filters, setFilt
               <Star className={`w-4 h-4 ${filters.showNewOnly ? 'fill-current' : ''}`} />
               {filters.showNewOnly ? 'New Only' : 'All Tunes'}
             </button>
+
+            {/* Artist Filter */}
+            <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
+              <User className="w-4 h-4" />
+              <select 
+                className="bg-transparent focus:outline-none max-w-xs"
+                value={filters.artist}
+                onChange={(e) => setFilters(prev => ({ ...prev, artist: e.target.value }))}
+              >
+                <option value="">All Artists</option>
+                {uniqueArtists.map(a => <option key={a} value={a}>{a}</option>)}
+              </select>
+            </div>
 
             <div className="flex items-center gap-2 px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg text-sm text-stone-600">
               <Library className="w-4 h-4" />

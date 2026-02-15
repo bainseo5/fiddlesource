@@ -135,10 +135,10 @@ Not yet indexed. This collection features recordings from the 1970s with:
 ## Summary
 
 **Overall Progress:**
-- **BR Taylor Collection:** 2/40+ sessions (5%)
+- **BR Taylor Collection:** 1/40+ sessions (2.5%)
 - **John Joe Healy Collection:** 1/40+ sessions (2.5%)
 - **Carroll Mackenzie Collection:** 0/20+ sessions (0%)
-- **Total:** 3/100+ sessions (~3%)
+- **Total:** 2/100+ sessions (~2%)
 
 ## Next Priority Sessions to Add
 

@@ -13,6 +13,7 @@ import { History, X, Star, Headphones, AlertTriangle, Download, Trash2, CheckCir
 const App: React.FC = () => {
   const [filters, setFilters] = useState<SearchFilters>({
     query: '',
+    artist: '',
     region: '',
     key: '',
     genre: '',
@@ -63,11 +64,13 @@ const App: React.FC = () => {
         tune.source.toLowerCase().includes(filters.query.toLowerCase());
       const matchRegion = filters.region ? tune.region === filters.region : true;
       const matchKey = filters.key ? tune.key === filters.key : true;
+      const matchGenre = filters.genre ? tune.genre === filters.genre : true;
       const matchCollection = filters.collection ? tune.collection === filters.collection : true;
       const matchSession = filters.session ? tune.sourceCollection === filters.session : true;
+      const matchArtist = filters.artist ? tune.artist.toLowerCase().includes(filters.artist.toLowerCase()) : true;
       const matchInstrument = filters.instrument ? (tune.instruments?.toLowerCase().includes(filters.instrument.toLowerCase()) ?? false) : true;
       
-      return matchQuery && matchRegion && matchKey && matchCollection && matchSession && matchInstrument;
+      return matchQuery && matchRegion && matchKey && matchGenre && matchCollection && matchSession && matchArtist && matchInstrument;
     });
 
     // 2. Apply "New Only" logic: Either specific new collections OR last 20
@@ -176,6 +179,7 @@ const App: React.FC = () => {
   const handleClearFilters = () => {
     setFilters({
       query: '',
+      artist: '',
       region: '',
       key: '',
       genre: '',
@@ -271,6 +275,7 @@ const App: React.FC = () => {
         setViewMode={setViewMode}
         collections={Array.from(new Set(allTunes.map(t => t.collection).filter(Boolean))).sort()}
         sessions={Array.from(new Set(allTunes.map(t => t.sourceCollection).filter(Boolean))).sort()}
+        artists={Array.from(new Set(allTunes.flatMap(t => t.artist ? t.artist.split(',').map(a => a.trim()) : []))).sort()}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
