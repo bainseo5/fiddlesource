@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Tune } from '../types';
-import { AudioPlayer } from './AudioPlayer';
-import { X, ArrowLeft, Download, Heart, Share2 } from 'lucide-react';
+import { X, ArrowLeft, Heart, Share2, Info } from 'lucide-react';
+import joecooleyInfo from '../data/joecooley-info.json'; 
 
 interface TuneDetailPageProps {
   tune: Tune;
@@ -19,6 +19,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
   onRemove
 }) => {
   const [currentTune] = useState<Tune>(tune);
+  const isCooleyTune = tune.collection === "The Joe Cooley Tapes" || tune.source.includes("Joe Cooley");
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 z-40 overflow-y-auto pt-20 pb-40">
@@ -112,6 +113,25 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
               </div>
             )}
           </div>
+
+          {/* Joe Cooley Collection Info */}
+          {isCooleyTune && (
+            <div className="bg-stone-800/50 border border-stone-700 rounded p-4 font-serif">
+               <div className="flex items-start gap-3">
+                 <Info className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                 <div>
+                   <h3 className="text-amber-100 font-bold mb-2">About The Joe Cooley Tapes</h3>
+                   <p className="text-stone-300 text-sm leading-relaxed mb-3">
+                     {joecooleyInfo.introduction}
+                   </p>
+                   <p className="text-stone-400 text-xs italic">
+                     Recordings by {joecooleyInfo.recordingDetails.recorders.join(' & ')} ({joecooleyInfo.recordingDetails.years}). 
+                     Curated by {joecooleyInfo.credits.curator}.
+                   </p>
+                 </div>
+               </div>
+            </div>
+          )}
 
           {/* Instruments */}
           {tune.instruments && (

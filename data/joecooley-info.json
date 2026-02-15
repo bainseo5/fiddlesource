@@ -1,0 +1,26 @@
+{
+  "title": "The Joe Cooley Tapes",
+  "subtitle": "Early 1970s Field Recordings from the San Francisco Bay Area",
+  "introduction": "This archive contains numerous field recordings made in the early 1970s of the great Irish accordion player Joe Cooley when he lived in the San Francisco Bay Area. The recordings capture Joe in a variety of settings, from intimate house sessions to lively pub gatherings, often accompanied by his close friend and fellow accordion master Kevin Keegan.",
+  "recordingDetails": {
+    "recorders": ["Jeremy Kammerer", "Cathie Whitesides"],
+    "equipment": "Norelco cassette recorder",
+    "years": "1970 - 1973",
+    "location": "San Francisco Bay Area (mostly Berkeley and Oakland, CA)",
+    "context": "The recordings were made with Joe's permission but often informally. As Cathie Whitesides notes: 'Joe would sometimes ask if the recorder was on before he started... Mostly he ignored the recording aspect... The recorder sometimes starts after the tune has begun, sometimes breaks off, the tunes flash with sublime brilliance and the odd missed note here and there.'"
+  },
+  "biography": {
+    "joeCooley": "Born in Peterswell, Co. Galway in 1924, Joe Cooley was a legendary Irish accordion player known for his passionate, joyful, and unique style. He was a member of the Tulla Ceili Band before emigrating to the US in 1953. His playing was characterized by 'the sunshine between the notes,' a phrase he used to describe what was actually important in music.",
+    "kevinKeegan": "Also born in 1924 in Tiernascragh, East Galway, Kevin Keegan was a master of the B/C accordion and a founding member of The Aughrim Slopes Ceili Band. He moved to San Francisco in the early 70s, where he and Joe became key figures in the local Irish music scene, inspiring a generation of young musicians.",
+    "theGraineogCeilidheBand": "In the Bay Area, Joe and Kevin, along with local musicians (including Jeremy Kammerer and Eric Thompson), formed 'The Graineog Ceilidhe Band'—named after the Irish word for 'hedgehog', a creature Joe described as 'the warmest, furriest little creature'."
+  },
+  "chicagoTapes": {
+      "title": "The Chicago Tapes",
+      "description": "Included in this collection are recordings made in a Chicago pub in the 1960s. These tracks feature a reunion of Joe with his brother Seamus Cooley (flute) and Kevin Keegan. They are considered some of the most animated live playing of the trio."
+  },
+  "credits": {
+    "source": "https://joecooleytapes.org",
+    "curator": "Cathie Whitesides",
+    "note": "These recordings were generously made available by Cathie Whitesides and Jeremy Kammerer as a gift to the community. 'Sharing this music is better than not doing so.'"
+  }
+}
