@@ -403,7 +403,7 @@ const App: React.FC = () => {
                       </button>
                       {tune.sourceCollection && (
                         <span className="flex-shrink-0 px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full uppercase tracking-tight">
-                          {getRecordingLabel(tune)}ordingLabel(tune)}
+                          {getRecordingLabel(tune)}
                         </span>
                       )}
                     </div>
