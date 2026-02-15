@@ -55,6 +55,17 @@ const App: React.FC = () => {
     initialize();
   }, []);
 
+  const getRecordingLabel = (tune: Tune) => {
+    if (tune.recordingType) {
+      return tune.recordingType.charAt(0).toUpperCase() + tune.recordingType.slice(1);
+    }
+    // Fallback logic
+    if (tune.sourceCollection?.toLowerCase().includes('session')) return 'Session';
+    // Check for multiple artists (comma separated)
+    if (tune.artist.includes(',')) return 'Session';
+    return 'Solo';
+  };
+
   const filteredTunes = useMemo(() => {
     // 1. Filter by search criteria (excluding "New Only" logic)
     const result = allTunes.filter(tune => {
@@ -392,7 +403,7 @@ const App: React.FC = () => {
                       </button>
                       {tune.sourceCollection && (
                         <span className="flex-shrink-0 px-2 py-0.5 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-full uppercase tracking-tight">
-                          Session
+                          {getRecordingLabel(tune)}ordingLabel(tune)}
                         </span>
                       )}
                     </div>

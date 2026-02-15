@@ -36,6 +36,10 @@ Create a new script in `scripts/` (e.g., `scripts/split-new-session.js`) based o
     - `type`: Reel, Jig, Hornpipe, etc.
     - `instruments`: "Fiddle", "Flute", etc.
     - `artist`: Performer name(s).
+    - `recordingType`: (Optional) "session", "solo", "duet", etc. Default logic:
+        - Multiple artists (comma-separated) -> "Session"
+        - Contains "Session" in collection name -> "Session"
+        - Otherwise -> "Solo"
     - `key` (optional): Key of the tune if known, otherwise "?".
 
 **Run the split script:**

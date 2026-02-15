@@ -18,6 +18,7 @@ export interface Tune {
   sourceCollection?: string; // Specific session/tape (e.g., "BR Taylor Collection - O'Connor's Bar Session, 1962")
   isImported?: boolean;
   fileCutSource?: boolean; // Indicates if this tune's audioUrl points to a physically cut segment
+  recordingType?: 'session' | 'solo' | 'duet' | 'recital' | 'demo' | 'ensemble';
 }
 
 export interface SearchFilters {
