@@ -22,6 +22,28 @@ const ACCOMPANIMENT_INSTRUMENTS = [
   'drums'
 ];
 
+const KNOWN_INSTRUMENTS = [
+  'accordion', 'button accordion', 'piano accordion', 'melodeon',
+  'fiddle', 'violin',
+  'flute', 'concert flute', 'wooden flute',
+  'whistle', 'tin whistle', 'penny whistle', 'low whistle',
+  'uilleann pipes', 'pipes', 'bagpipes',
+  'concertina', 'anglo concertina',
+  'banjo', 'tenor banjo',
+  'mandolin',
+  'harmonica', 'mouth organ',
+  'piano', 'keyboards',
+  'guitar',
+  'bouzouki',
+  'bodhran', 'bodhrán',
+  'drums', 'snare drum',
+  'bones', 'spoons'
+];
+
+function isInstrument(str) {
+    return KNOWN_INSTRUMENTS.includes(str.toLowerCase());
+}
+
 async function updateTunes() {
   console.log(`Reading ${TUNES_FILE}...`);
   if (!fs.existsSync(TUNES_FILE)) {
@@ -58,62 +80,71 @@ async function updateTunes() {
 
     // 1. Update Artist from Instruments
     if (tune.instruments) {
-      // Parse instruments: "Accordion (Joe Cooley), Banjo (Kevin Keegan)"
-      // Regex to find content in parens associated with instruments
-      // Split by comma first to handle multiple
+      // Parse instruments: "Accordion (Joe Cooley)", "Paddy Fahy (fiddle)"
       const parts = tune.instruments.split(',').map(s => s.trim());
       
       const artists = [];
       let melodyCount = 0;
 
       for (const part of parts) {
-        // Match "InstrumentName (ArtistName)"
         const match = part.match(/^([^(]+)\(([^)]+)\)$/);
         
         if (match) {
-          const inst = match[1].trim().toLowerCase();
-          const artistName = match[2].trim();
+          const partA = match[1].trim();
+          const partB = match[2].trim();
+          
+          let instrument = "";
+          let artistName = "";
+
+          // Determine which part is the instrument
+          if (isInstrument(partA)) {
+            // Case: Accordion (Joe Cooley)
+            instrument = partA;
+            artistName = partB;
+          } else if (isInstrument(partB)) {
+             // Case: Paddy Fahy (fiddle)
+             instrument = partB;
+             artistName = partA;
+          } else {
+             // Fallback: Default to Instrument (Artist) if ambiguous
+             // but if part B is definitely NOT an instrument (e.g. a name), and part A IS NOT an instrument
+             // we are in trouble. But usually one IS an instrument.
+             
+             // If neither is in our known list, rely on heuristics or keep existing "Instrument (Artist)" assumption
+             instrument = partA;
+             artistName = partB;
+          }
           
           artists.push(artistName);
 
           // Check if melody instrument
-          const isAccompaniment = ACCOMPANIMENT_INSTRUMENTS.some(acc => inst.includes(acc));
+          const isAccompaniment = ACCOMPANIMENT_INSTRUMENTS.some(acc => instrument.toLowerCase().includes(acc));
           if (!isAccompaniment) {
             melodyCount++;
           }
-        } else {
-          // If no parens (e.g. "Fiddle"), treat as melody unless known accompaniment
-          // But we can't extract artist name.
-          // If "Joe Cooley (Accordion)", handle that? 
-          // Previous grep showed "Accordion (Joe Cooley)".
-          const revMatch = part.match(/^([^(]+)\(([^)]+)\)$/); // Same regex really
-        }
+        } 
       }
 
       // Update Artist string if musicians found
       if (artists.length > 0) {
-        // Filter out duplicates
-        const uniqueArtists = [...new Set(artists)];
-        const newArtistString = uniqueArtists.join(', ');
+        // Filter out duplicates and "unknown" or "?" placeholders
+        const uniqueArtists = [...new Set(artists)].filter(a => a !== '?' && a.toLowerCase() !== 'unknown');
+        
+        if (uniqueArtists.length > 0) {
+            const newArtistString = uniqueArtists.join(', ');
 
-        if (tune.artist !== newArtistString) {
-            // Only update if it looks like a meaningful change (e.g. adding missing people)
-            // Or totally replacing "Joe Cooley" with "Joe Cooley, Kevin Keegan"
-             
-            // Some existing artists might be "The Tulla Ceili Band". Don't overwrite if instruments don't cover it?
-            // User specifically asked to "update the artists in the card".
-            // Let's be aggressive for Joe Cooley tapes specifically, or generally if 'instruments' is rich.
-            
-            // Safety: Only if instruments is structured "Inst (Name)"
-            if (tune.instruments.includes('(')) {
-                 tune.artist = newArtistString;
-                 modified = true;
+            if (tune.artist !== newArtistString) {
+                // Only update if instruments structure implies we have valid data
+                if (tune.instruments.includes('(')) {
+                     // console.log(`Updating ${tune.id}: "${tune.artist}" -> "${newArtistString}"`);
+                     tune.artist = newArtistString;
+                     modified = true;
+                }
             }
         }
       }
 
       // 2. Logic for Solo vs Session
-      // "if there is only one melody instrument ... it should be marked as solo"
       if (melodyCount === 1) {
         if (tune.recordingType !== 'solo') {
           tune.recordingType = 'solo';
@@ -121,9 +152,6 @@ async function updateTunes() {
           soloCount++;
         }
       } else if (melodyCount > 1) {
-         // If currently solo but has multiple melody instruments, strictly it's a duet/session
-         // But user only asked to mark 1 as solo. Did not ask to unmark others. 
-         // But for correctness:
          if (tune.recordingType === 'solo') {
              tune.recordingType = 'session';
              modified = true;
@@ -141,7 +169,6 @@ async function updateTunes() {
   }
 
   console.log(`Updated ${updateCount} tunes.`);
-  console.log(`Marked ${soloCount} as Solo.`);
   
   const finalOutput = dictionaryFormat ? updatedTunesMap : updatedTunesList;
   

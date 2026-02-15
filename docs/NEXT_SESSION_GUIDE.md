@@ -13,9 +13,14 @@ When preparing a new `split-SESSIONNAME.js` script, ensure the `tunes.push({...}
 | `artist` | Full artist string (or truncated if massive) | "Paddy Fahy (fiddle)" |
 | `recordingType` | "session" or "solo" | "session" |
 | `year` | Extracted year or string | "1976" |
-| `region` | The geographical location | "Mullagh" |
+| `region` | The geographical location (auto-pulled from session metadata) | "Mullagh", "Chicago", "Aughrim, Co. Galway" |
 | `description` | Full context paragraph | "Recorded in Katty's Bar..." |
 | `sourceCollection` | Full specific collection name | "BR Taylor Collection Tape 019-2" |
+
+**Best Practice:**
+- Define a `const SESSION_REGION = "..."` at the top of your split script and use it for every tune object.
+- When merging new tracks into `tunes.json`, verify each has a `region` field. If missing, fill from the session context.
+- Consider running a script to list all unique regions in the DB to keep your UI filter up to date.
 
 ### 🛑 Stop & Check
 Examples of updated scripts are:
@@ -38,6 +43,7 @@ node scripts/generated-session-scripts/split-mullagh-session.js
 ### B. Merge to Database
 Manually copy the objects from the generated JSON into `backend/data/tunes.json`.
 *   *Tip*: Ensure IDs are unique.
+*   *Tip*: Ensure every tune has a `region` field (auto from session if possible).
 
 ### C. Upload to Cloudinary
 Use the generic upload script. You may need to edit `scripts/upload-session.js` to point to the correct local folder and file prefix.
@@ -55,6 +61,7 @@ This script will:
 3.  **Verify UI Tags**:
     - Does "SESSION" or "SOLO" appear on the card?
     - Does the "About" section show the full description with newlines?
+    - Does the region filter show the new region?
 4.  Commit and Push.
 
 ## 3. Troubleshooting
