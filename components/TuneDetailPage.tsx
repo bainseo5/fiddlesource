@@ -77,7 +77,7 @@ export const TuneDetailPage: React.FC<TuneDetailPageProps> = ({
           {tune.description && (
             <div>
               <h2 className="text-xl font-bold text-amber-50 mb-2">About</h2>
-              <p className="text-stone-300 leading-relaxed">{tune.description}</p>
+              <p className="text-stone-300 leading-relaxed whitespace-pre-line">{tune.description}</p>
             </div>
           )}
 
