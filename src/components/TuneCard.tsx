@@ -219,7 +219,7 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
           </div>
           <div className="flex items-center gap-2">
             <Music className="w-4 h-4 text-stone-400" />
-            <span>Key of {tune.key}</span>
+            <span>{tune.type}</span>
           </div>
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-stone-400" />
