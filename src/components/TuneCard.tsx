@@ -134,12 +134,7 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
             SOLO
           </div>
         )}
-        {tune.type && (
-          <div className="flex items-center gap-1 px-2 py-0.5 bg-stone-100 text-stone-600 text-[10px] font-bold rounded-full uppercase tracking-tighter shadow-sm border border-stone-200">
-            <Music className="w-2.5 h-2.5" />
-            {tune.type}
-          </div>
-        )}
+        {/* Removed tune type tag from top right corner */}
       </div>
       
       <div className="p-5">
