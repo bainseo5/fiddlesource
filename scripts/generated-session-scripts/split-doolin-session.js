@@ -630,16 +630,23 @@ function generateTuneEntries() {
   tracks.forEach(track => {
     const startSec = parseTime(track.start);
     const endSec = parseTime(track.end);
-    
     // Skip tracks with unknown timestamps
     if (startSec === null || endSec === null) {
       return;
     }
-    
     const duration = endSec - startSec;
     const artist = getArtist(track.itemNum, track.title);
     const instruments = getInstruments(track.itemNum, track.title);
-    
+    // Determine source URL
+    let sourceUrl = "https://www.clarelibrary.ie/eolas/coclare/music/live/index_live.htm";
+    // If track or session is from Cooley tapes, use Cooley site
+    // Example logic: if sessionInfo.collection or track.title includes 'Cooley', update sourceUrl
+    if (
+      (sessionInfo.collection && sessionInfo.collection.toLowerCase().includes('cooley')) ||
+      (track.title && track.title.toLowerCase().includes('cooley'))
+    ) {
+      sourceUrl = "https://joecooleytapes.org/";
+    }
     entries[track.id] = {
       id: track.id,
       title: track.title,
@@ -650,7 +657,7 @@ function generateTuneEntries() {
       tuning: "Standard",
       year: sessionInfo.date,
       audioUrl: `/audio/${track.id}.mp3`,
-      description: `Individual cut from the ${sessionInfo.location} session, ${sessionInfo.date}. Features ${artist}.`,
+      description: `Individual cut from the ${sessionInfo.location} session, ${sessionInfo.date}. Features ${artist}.\nOriginal source: ${sourceUrl}`,
       genre: "Irish Traditional",
       type: track.type,
       startTime: 0,
