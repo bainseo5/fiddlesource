@@ -1,91 +1,80 @@
-# Session Ingestion Workflow
+# Workflow: Adding New Sessions
 
-This document outlines the standard operating procedure for adding a new session (or tape) from the Clare Library (or other sources) into the Fiddlesource archive.
+This document outlines the standard 3-step process for adding new traditional music sessions to the archive.
 
-## Prerequisites
+##  Important Prerequisites
+*   **Source File:** You must have the original MP3 file downloaded to your local rchive/ folder.
+*   **FFmpeg:** Must be installed and accessible in your terminal.
+*   **File Naming:** Ensure downloaded files match the names expected by the scripts (usually Location_Date.mp3 or similar).
 
-- **Node.js** installed
-- **FFmpeg** installed and in your system PATH
-- **Cloudinary** credentials (API Key, Secret, Cloud Name) in `.env` or environment variables
+---
 
-## Step 1: Selection & Tracking
+## 1. Scrape & Generate Scripts (One-Time Setup)
 
-1.  Check [COLLECTION_TRACKER.md](COLLECTION_TRACKER.md) to see which session is next in the queue.
-2.  Mark the session as "In Progress" (🔄).
-3.  Navigate to the source URL (usually Clare Library) to find the audio file and track listing.
+*Note: This step has largely been completed for the Clare Library "Live" section (Taylor, Healy, Carroll-Mackenzie collections).*
 
-## Step 2: Download & Setup
+We use a scraper to read the Clare Library website and automatically generate the processing scripts for each session.
 
-1.  Download the main MP3 file for the session.
-2.  Save it to the `archive/` folder.
-    - *Naming Convention:* `JH[ID]_[Location]_[Date].mp3` (e.g., `JH24-1_Kiltannon_1972.mp3`).
-    - *Note:* The file path in the script must match this location.
+`ash
+node scripts/scrapers/scrape_clare_library_sessions.js
+`
 
-## Step 3: Create the Split Script
+This creates individual scripts in the scripts/generated-session-scripts/ directory, e.g., split-annagh_CM-WC5.js.
 
-Create a new script in `scripts/` (e.g., `scripts/split-new-session.js`) based on previous examples like `scripts/split-kiltannon-session.js`.
+---
 
-**Key components to configure:**
-- `SOURCE_FILE`: Path to the downloaded MP3 in `archive/`.
-- `sessionInfo`: Object containing metadata (Recorder, Location, Date, Region, Collection).
-- `tracks`: Array of objects. Each object represents a tune/track.
-    - `id`: Unique suffix (e.g., `sessionname-01`).
-    - `start`: Start time (string like "0.00" or "1:30").
-    - `end`: End time (string like "1.45" or "2:15").
-    - `title`: Name of the tune.
-    - `type`: Reel, Jig, Hornpipe, etc.
-    - `instruments`: "Fiddle", "Flute", etc.
-    - `artist`: Performer name(s).
-    - `recordingType`: (Optional) "session", "solo", "duet", etc. Default logic:
-        - Multiple artists (comma-separated) -> "Session"
-        - Contains "Session" in collection name -> "Session"
-        - Otherwise -> "Solo"
-    - `key` (optional): Key of the tune if known, otherwise "?".
+## 2. Process a Session (Split Audio)
 
-**Run the split script:**
-```bash
-node scripts/split-new-session.js
-```
-*Result:* This will generate MP3 clips in the `output/` folder and a JSON file (e.g., `scripts/new-session-tunes.json`) containing the database entries.
+Pick a session you want to ingest from the scripts/generated-session-scripts/ folder.
 
-## Step 4: Merge Data into Database
+1.  **Open the Script:** (e.g., scripts/generated-session-scripts/split-annagh_CM-WC5.js)
+2.  **Verify Source Path:** Check the SOURCE_FILE constant at the top. Ensure it points to your downloaded MP3.
+3.  **Check Timestamps:**
+    *   The scraper attempts to import timestamps.
+    *   If you see 'TBD' in the start or end fields, you must listen to the audio and manually enter the minutes.seconds (e.g., '3.45').
+    *   Check for "Medleys" (tunes played back-to-back). These often need manual timestamping.
 
-Create a merge script (e.g., `scripts/merge-new-session.js`) or use a generic one if available. It needs to read the JSON generated in Step 3 and merge it into `backend/data/tunes.json`.
+4.  **Run the Splitter:**
+    `ash
+    node scripts/generated-session-scripts/split-annagh_CM-WC5.js
+    `
 
-**Run the merge script:**
-```bash
-node scripts/merge-new-session.js
-```
-*Result:* `backend/data/tunes.json` now contains the new tunes. The `audioUrl` fields will point to cloud locations that **do not exist yet**.
+**Output:**
+*   **Audio:** Individual MP3 files created in output/ and src/data/tunes.json.
+*   **Data:** A JSON file created in output/ (e.g., nnagh_CM-WC5-tunes.json) containing all metadata.
 
-## Step 5: Upload Audio to Cloudinary
+---
 
-Create an upload script (e.g., `scripts/upload-new-session.js`) simply targeting the files in `output/` that start with your session prefix.
+## 3. Merge into Database
 
-**Key components:**
-- Use `cloudinary` SDK.
-- Target folder: `fiddlesource`.
-- `public_id`: filename without extension (e.g., `sessionname-01`).
+Once you are happy with the split results, import the new tunes into the main application database.
 
-**Run the upload script:**
-```bash
-node scripts/upload-new-session.js
-```
-*Result:* Files are live on Cloudinary. The URLs in `tunes.json` (from Step 4) are now valid.
+`ash
+node scripts/merge-session.js output/annagh_CM-WC5-tunes.json
+`
 
-## Step 6: Verify & deploy
+**This script will:**
+1.  Backup your existing ackend/data/tunes.json.
+2.  Add the new tunes to the database.
+3.  Skip any duplicates automatically.
 
-1.  **Test Locally:** Run `npm run dev` and check the new tunes on the local site.
-2.  **Update Tracker:** Mark the session as "Complete" (✅) in `COLLECTION_TRACKER.md`.
-3.  **Commit & Push:**
-    ```bash
-    git add .
-    git commit -m "Add [Session Name] (JH[ID])"
-    git push origin main
-    ```
-4.  **Deployment:** The push will trigger a deployment (e.g., on Railway), making the new tunes live for everyone.
+---
 
-## File Cleanup (Optional)
+## 4. Upload to Cloud (Cloudinary)
 
-- Delete the generated MP3s in `output/` to save space (they are now in the cloud).
-- Keep the source MP3 in `archive/` if you want a local backup.
+Finally, make the audio accessible online.
+
+1.  **Run the generic uploader:**
+    *(Currently setup for specific sessions, but easily adaptable)*
+    `ash
+    node scripts/backend/updateCloudinaryUrls.js
+    `
+    *Note: You may need to edit this script to target your specific new files if doing valid partial uploads.*
+
+2.  **Verify:** Check the application to ensure the new tunes play correctly.
+
+---
+
+## 5. Cleanup
+*   You can delete the temporary MP3s in output/ once they are safely on Cloudinary.
+*   Keep the original raw recording in rchive/ for safety.

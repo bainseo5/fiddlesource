@@ -1,20 +1,70 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# FiddleSource - Traditional Music Archive
 
-# Run and deploy your AI Studio app
+A comprehensive digital archive of traditional Irish music sessions, designed to preserve, organize, and make accessible rare field recordings of master musicians.
 
-This contains everything you need to run your app locally.
+## 🎵 Project Mission
 
-View your app in AI Studio: https://ai.studio/apps/drive/1jMx5FKLd7qQHWoyykWtwJaoZQ3O1mLIp
+FiddleSource transforms long, raw field recordings into structured, searchable digital data. It takes single audio files of entire sessions (often 30-45 minutes long) and:
 
-## Run Locally
+1.  **Splits** them into individual tracks for each tune.
+2.  **Identifies** the tunes, musicians, and instruments.
+3.  **Preserves** the metadata (date, location, collection).
+4.  **Serves** them via a modern React interface.
 
-**Prerequisites:**  Node.js
+## 🛠️ Technology Stack
 
+-   **Frontend:** React + TypeScript (Vite)
+-   **Backend:** Node.js + Express
+-   **Data Processing:** Custom Node.js scripts + FFmpeg
+-   **Database:** JSON-based local database (easily portable)
+-   **Hosting:** Railway (Backend) / Vercel or Netlify (Frontend capable)
+-   **Audio Storage:** Cloudinary (Automatic streaming optimization)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🚀 Getting Started
+
+### Prerequisites
+-   Node.js (v18+)
+-   FFmpeg (Installed and added to system PATH)
+
+### Installation
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/fiddlesource.git
+    cd fiddlesource
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    cd backend && npm install && cd ..
+    ```
+
+3.  Configure Environment:
+    Create a `.env` file in the root directory:
+    ```env
+    CLOUDINARY_CLOUD_NAME=your_cloud_name
+    CLOUDINARY_API_KEY=your_api_key
+    CLOUDINARY_API_SECRET=your_api_secret
+    ```
+
+### Running Locally
+To start the standard development environment:
+```bash
+npm run dev
+```
+
+## 📂 Project Structure
+
+-   `scripts/`: The heart of the processing pipeline (scrapers, splitters).
+-   `backend/`: Express server API.
+    -   `backend/data/`: The `tunes.json` database.
+-   `src/`: React frontend application.
+-   `archive/`: Storage for raw MP3 files (not committed to Git).
+
+## 📚 Documentation
+
+-   **[Adding New Sessions](ADDING_NEW_SESSIONS.md)**: The core workflow for ingesting new music.
+-   **[Backend Setup](BACKEND_SETUP.md)**: Server configuration details.
+
+---
+
+*Preserving the tradition, one tune at a time.*
