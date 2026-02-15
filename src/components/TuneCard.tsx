@@ -11,10 +11,11 @@ interface TuneCardProps {
   onFilterByArtist: (artist: string) => void;
   onFilterByCollection: (collection: string) => void;
   onFilterBySession: (session: string) => void;
+  onFilterByRegion: (region: string) => void;
   isPlaying: boolean;
 }
 
-export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails, onFilterByTitle, onFilterByArtist, onFilterByCollection, onFilterBySession, isPlaying }) => {
+export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails, onFilterByTitle, onFilterByArtist, onFilterByCollection, onFilterBySession, onFilterByRegion, isPlaying }) => {
   const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
@@ -165,18 +166,6 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
                   {index < array.length - 1 && <span className="text-stone-400 mx-0.5">,</span>}
                 </React.Fragment>
               ))}
-              {tune.region && (
-                <>
-                  <span className="text-stone-400 mx-1">|</span>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); onFilterBySession && onFilterBySession(''); onFilterByCollection && onFilterByCollection(''); onFilterByArtist && onFilterByArtist(''); onFilterByTitle && onFilterByTitle(''); onFilterByRegion && onFilterByRegion(tune.region); }}
-                    className="text-left text-blue-700 font-medium text-sm hover:text-blue-900 hover:underline transition-colors"
-                    title={`Filter by region: ${tune.region}`}
-                  >
-                    {tune.region}
-                  </button>
-                </>
-              )}
             </div>
           </div>
           {/* Traffic light button stack */}
@@ -215,7 +204,17 @@ export const TuneCard: React.FC<TuneCardProps> = ({ tune, onPlay, onShowDetails,
         <div className="grid grid-cols-2 gap-y-3 text-sm text-stone-500 mt-4 border-t border-stone-50 pt-4">
           <div className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-stone-400" />
-            <span className="truncate">{tune.region}</span>
+            {tune.region ? (
+              <button
+                onClick={(e) => { e.stopPropagation(); onFilterByRegion && onFilterByRegion(tune.region); }}
+                className="truncate text-blue-700 font-medium hover:text-blue-900 hover:underline transition-colors"
+                title={`Filter by region: ${tune.region}`}
+              >
+                {tune.region}
+              </button>
+            ) : (
+              <span className="truncate">Unknown</span>
+            )}
           </div>
           <div className="flex items-center gap-2">
             <Music className="w-4 h-4 text-stone-400" />

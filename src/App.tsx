@@ -349,6 +349,7 @@ const App: React.FC = () => {
                             onFilterByArtist={handleFilterByArtist}
                             onFilterByCollection={handleFilterByCollection}
                             onFilterBySession={handleFilterBySession}
+                            onFilterByRegion={(region) => setFilters(prev => ({ ...prev, region }))}
                             isPlaying={currentTune?.id === tune.id}
                           />
                           
@@ -481,6 +482,7 @@ const App: React.FC = () => {
                   onFilterByArtist={handleFilterByArtist}
                   onFilterByCollection={handleFilterByCollection}
                   onFilterBySession={handleFilterBySession}
+                  onFilterByRegion={(region) => setFilters(prev => ({ ...prev, region }))}
                   isPlaying={currentTune?.id === tune.id}
                 />
                 
